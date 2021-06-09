@@ -13,11 +13,6 @@
 * 打造一个适合自己的博客主题（这个放在最后是因为自己前端知识比较薄弱）
 
 
-##### 已知问题
-
-1. 浏览器适配（当前仅适配 Chrome）
-2. bower install 被执行时会出现个别扩展无法正常安装，建议手动一个个安装
-
 ## 功能模块
 
 #### 欢迎页面
@@ -100,7 +95,7 @@
 ### 部署步骤
 
 clone 项目
-> git clone https://github.com/techflowing/Blog.git
+> git clone https://github.com/Witcier/blog.git
 
 编辑配置（备份、阿里云OSS、备案等信息按需配置，非必须）
 > cp .env.example .env
@@ -145,6 +140,11 @@ Laravel-backu 已经在项目集成，只需要配置阿里云 OSS 后基于 Lin
 #### 常见问题
 
 [Mysql 8.0 认证方式问题](https://www.cnblogs.com/cndavidwang/p/9357684.html "Mysql 8.0 认证方式问题")
+
+##### 已知问题
+
+1. 浏览器适配（当前仅适配 Chrome）
+2. bower install 被执行时会出现个别扩展无法正常安装，建议手动一个个安装
 
 
 ## 致谢
