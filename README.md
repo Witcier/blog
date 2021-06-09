@@ -1,28 +1,22 @@
-
-此项目为个人站源码项目，线上可以访问：[http://techflowing.cn/](http://techflowing.cn/) 查看效果，欢迎fork & star，不合理的地方也欢迎批评指正，求大佬轻喷 ......，
-更多详细介绍可参考 [个人站记录](http://techflowing.cn/wiki/detail/8)
-
 ## 站点简介
 
-##### 缘起
+##### 启程
 
-闲逛 GitHub 时发现一个网址导航网站项目 [WebStack-Laravel](https://github.com/hui-ho/WebStack-Laravel "WebStack-Laravel")，觉着这项目有意思，搞下试试，折腾尝试部署，成功；然后顺带看了眼 Laravel 官方文档，哎，这框架牛逼，好好看看。与此同时，我正在找一款能支持无限分级、目录和文件同时存在的，可云端同步的笔记应用，无果，对比多家后都不是很满意。算了，自己写一个吧，正好把之前的 Hexo 博客也一波给干掉，搞起！
-
-理想很丰满，现实很骨感，PHP、大前端技能基本为零，项目写起来基本处于写一行查一行的状况，各种找示例参考，痛并快乐着！
+上班时闲逛 Laravel 社区发现了一个很牛的个人博客项目[techflowing-Blog](https://github.com/techflowing/Blog)，就把项目 clone 了，然后部署成功、运行，发现自己的个人博客网站瞬间弱爆了。然后便想着要不然把自己原来的博客网站给干掉吧，然后基于[techflowing-Blog](https://github.com/techflowing/Blog)重新开发一个适合自己的个人博客网站。
 
 
-##### 大事记
+##### 改造
 
-* 2020/10/11，开源
-* 2020/06/25，添加留言板模块
-* 2020/06/24，添加思维导图模块
-* 2020/06/19，完成关于模块
-* 2020/05/31，添加首页
-* 2020/05/30，完成博客模块
-* 2020/04/16，整体修改为黑色主题
-* 2020/04/13，完成 Wiki 模块
-* 2020/03/22，完成导航站模块
-* 2020/03/21，初始化项目
+* 升级 [Laravel](https://learnku.com/docs/laravel/8.x) 框架为 8.*
+* 将 [Laravel-admin](https://laravel-admin.org/) 改成 [Dcat Admin](https://learnku.com/docs/dcat-admin/2.x)
+* 本地线上将采用统一环境使用 [Laravel Sail](https://learnku.com/docs/laravel/8.x/sail/9789)
+* 打造一个适合自己的博客主题（这个放在最后是因为自己前端知识比较薄弱）
+
+
+##### 已知问题
+
+1. 浏览器适配（当前仅适配 Chrome）
+2. bower install 被执行时会出现个别扩展无法正常安装，建议手动一个个安装
 
 ## 功能模块
 
@@ -155,7 +149,9 @@ Laravel-backu 已经在项目集成，只需要配置阿里云 OSS 后基于 Lin
 
 ## 致谢
 
-* [Laravel 7](https://learnku.com/docs/laravel/7.x "Laravel 7")
+##### 致谢
+
+* [Laravel](https://learnku.com/laravel)
 * [WebStack-Laravel](https://github.com/hui-ho/WebStack-Laravel "WebStack-Laravel")
 * [Laravel-admin](https://laravel-admin.org/ "Laravel-admin")
 * [Editor.md](http://editor.md.ipandao.com/ "Editor.md")
@@ -164,4 +160,6 @@ Laravel-backu 已经在项目集成，只需要配置阿里云 OSS 后基于 Lin
 * [SmartWiki](https://github.com/lifei6671/SmartWiki "SmartWiki")
 * [Valine](https://valine.js.org/)
 * [KityMinder](https://github.com/fex-team/kityminder)
+* [Laravel Sail](https://learnku.com/docs/laravel/8.x/sail/9789)
+* [Dcat Admin](https://learnku.com/docs/dcat-admin/2.x)
 
