@@ -8,7 +8,7 @@ use App\Model\Event\Event;
 use App\Model\XMind\Category;
 use App\Model\XMind\XMind;
 use App\Util\StatisticUtil;
-use Encore\Admin\Facades\Admin;
+use Dcat\Admin\Facades\Admin;
 
 /**
  * 思维导图相关控制器

@@ -8,7 +8,7 @@ use App\Model\Event\Event;
 use App\Model\Wiki\WikiDocument;
 use App\Model\Wiki\WikiProject;
 use App\Util\StatisticUtil;
-use Encore\Admin\Facades\Admin;
+use Dcat\Admin\Facades\Admin;
 
 /**
  * Wiki 相关控制器

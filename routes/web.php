@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Routing\Router;
 
 /*
 |--------------------------------------------------------------------------
@@ -66,16 +67,17 @@ Route::group(['prefix' => 'about'], function () {
 
 
 // 后台管理模块路由
-Admin::routes();
+// Admin::routes();
 Route::group([
     'prefix' => config('admin.route.prefix'),
     'namespace' => config('admin.route.namespace'),
     'middleware' => config('admin.route.middleware'),
 ], function () {
-
-    // 切换为带验证码的登录
-    Route::get('auth/login', '\Encore\James\JamesController@getLogin');
-    Route::post('auth/login', '\Encore\James\JamesController@postLogin');
+    // 权限管理
+    Route::resource('permissions', 'PermissionController');
+    // // 切换为带验证码的登录
+    // Route::get('auth/login', '\Encore\James\JamesController@getLogin');
+    // Route::post('auth/login', '\Encore\James\JamesController@postLogin');
     // 仪表盘
     Route::get('/', 'DashboardController@index')->name('admin:dashboard');
     // 导航站分类管理

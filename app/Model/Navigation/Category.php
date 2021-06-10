@@ -2,8 +2,8 @@
 
 namespace App\Model\Navigation;
 
-use Encore\Admin\Traits\AdminBuilder;
-use Encore\Admin\Traits\ModelTree;
+use Dcat\Admin\Traits\AdminBuilder;
+use Dcat\Admin\Traits\ModelTree;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
@@ -14,7 +14,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  */
 class Category extends Model
 {
-    use ModelTree, AdminBuilder;
+    use ModelTree;
 
     protected $table = 'navigation_categories';
 

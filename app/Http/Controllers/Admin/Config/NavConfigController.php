@@ -4,10 +4,10 @@ namespace App\Http\Controllers\Admin\Config;
 
 use App\Http\Controllers\Controller;
 use App\Model\Admin\HomeNavMenu;
-use Encore\Admin\Controllers\ModelForm;
-use Encore\Admin\Form;
-use Encore\Admin\Grid;
-use Encore\Admin\Layout\Content;
+use Dcat\Admin\Controllers\ModelForm;
+use Dcat\Admin\Form;
+use Dcat\Admin\Grid;
+use Dcat\Admin\Layout\Content;
 
 /**
  * 网站配置控制器

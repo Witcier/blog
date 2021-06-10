@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Admin\Forms\LeetCodeCreator;
 use App\Http\Controllers\BaseController;
-use Encore\Admin\Layout\Content;
+use Dcat\Admin\Layout\Content;
 
 /**
  * LeetCode 题解生成器

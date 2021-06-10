@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin\Forms;
 
 use App\Model\Wiki\WikiDocument;
 use App\Model\Wiki\WikiProject;
-use Encore\Admin\Widgets\Form;
+use Dcat\Admin\Widgets\Form;
 use Illuminate\Http\Request;
 
 /**

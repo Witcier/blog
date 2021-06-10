@@ -4,9 +4,9 @@ namespace App\Http\Controllers\Admin\XMind;
 
 use App\Http\Controllers\BaseController;
 use App\Model\XMind\Category;
-use Encore\Admin\Controllers\ModelForm;
-use Encore\Admin\Form;
-use Encore\Admin\Layout\Content;
+use Dcat\Admin\Controllers\ModelForm;
+use Dcat\Admin\Form;
+use Dcat\Admin\Layout\Content;
 
 /**
  * 思维导图分类管理页面

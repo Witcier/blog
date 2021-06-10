@@ -5,11 +5,11 @@ namespace App\Http\Controllers\Admin\Navigation;
 use App\Http\Controllers\Controller;
 use App\Model\Navigation\Category;
 use App\Model\Navigation\Site;
-use Encore\Admin\Controllers\HasResourceActions;
-use Encore\Admin\Form;
-use Encore\Admin\Grid;
-use Encore\Admin\Layout\Content;
-use Encore\Admin\Show;
+use Dcat\Admin\Http\Controllers\HasResourceActions;
+use Dcat\Admin\Form;
+use Dcat\Admin\Grid;
+use Dcat\Admin\Layout\Content;
+use Dcat\Admin\Show;
 
 /**
  * 网站管理
@@ -103,25 +103,25 @@ class SiteController extends Controller
      */
     private function grid()
     {
-        $grid = new Grid(new Site);
+        $grid = new Grid(new Site());
 
-        // $grid->id('ID');
+        $grid->model()->with(['category']);
         $grid->order('顺序');
-        $grid->category()->title('分类');
-        $grid->title('标题');
+        $grid->column('category.title', '分类');
+        $grid->column('title', '标题');
         $grid->describe('描述')->limit(40);
         $grid->url('地址');
 
+        
         $grid->filter(function ($filter) {
             $filter->disableIdFilter();
 
-            $categories = Category::query()->pluck('title', 'id');
+            $categories = Category::all()->pluck('title', 'id');
             $filter->equal('category_id', '分类')->select($categories);
 
             $filter->like('title', '标题');
         });
 
-        $grid->disableExport();
         $grid->disableColumnSelector();
         return $grid;
     }

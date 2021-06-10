@@ -4,10 +4,10 @@ namespace App\Http\Controllers\Admin\Wiki;
 
 use App\Http\Controllers\Controller;
 use App\Model\Wiki\WikiProject;
-use Encore\Admin\Controllers\ModelForm;
-use Encore\Admin\Form;
-use Encore\Admin\Grid;
-use Encore\Admin\Layout\Content;
+use Dcat\Admin\Controllers\ModelForm;
+use Dcat\Admin\Form;
+use Dcat\Admin\Grid;
+use Dcat\Admin\Layout\Content;
 
 /***
  * Wiki 管理控制器
@@ -16,11 +16,6 @@ use Encore\Admin\Layout\Content;
  */
 class WikiProjectController extends Controller
 {
-    /**
-     * 表单对象，包含新增、删除等操作
-     */
-    use ModelForm;
-
     /**
      * 首页，显示Wiki 项目列表
      * @param Content $content

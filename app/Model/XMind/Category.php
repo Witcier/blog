@@ -2,8 +2,8 @@
 
 namespace App\Model\XMind;
 
-use Encore\Admin\Traits\AdminBuilder;
-use Encore\Admin\Traits\ModelTree;
+use Dcat\Admin\Traits\AdminBuilder;
+use Dcat\Admin\Traits\ModelTree;
 use Illuminate\Database\Eloquent\Model;
 
 /**

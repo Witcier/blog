@@ -2,45 +2,35 @@
 
 namespace App\Http\Controllers\Admin\Navigation;
 
-use App\Http\Controllers\Controller;
+use \Dcat\Admin\Http\Controllers\AdminController;
 use App\Model\Navigation\Category;
-use Encore\Admin\Controllers\ModelForm;
-use Encore\Admin\Form;
-use Encore\Admin\Layout\Content;
+use Dcat\Admin\Form;
+use Dcat\Admin\Grid;
+use Dcat\Admin\Layout\Content;
+use Dcat\Admin\Layout\Row;
+use Dcat\Admin\Tree;
 
 /**
  * 网站分类管理
  * Class CategoryController
  * @package App\Admin\Controllers\navigation
  */
-class CategoryController extends Controller
+class CategoryController extends AdminController
 {
-    /**
-     * 表单对象，包含新增、删除等操作
-     */
-    use ModelForm;
+    protected $title = '导航-分类';
 
-    /**
-     * 展示所有分类
-     * @param Content $content
-     * @return Content
-     */
     public function index(Content $content)
     {
-
-        return $content->header('分类管理')
-            ->body(Category::tree());
+        return $content
+            ->description(trans('admin.list'))
+            ->body($this->treeView());
     }
 
-    /**
-     * 新增分类
-     * @param Content $content
-     * @return Content
-     */
-    public function create(Content $content)
+    protected function treeView()
     {
-        return $content->header('新增分类')
-            ->body($this->form());
+        return new Tree(new Category(), function (Tree $tree) {
+            $tree->disableCreateButton();
+        });
     }
 
     /**
@@ -49,7 +39,7 @@ class CategoryController extends Controller
      * @param $id 分类ID
      * @return Content
      */
-    public function edit(Content $content, $id)
+    public function edit($id, Content $content)
     {
         return $content->header('编辑分类')
             ->body($this->form()->edit($id));
@@ -60,9 +50,9 @@ class CategoryController extends Controller
      * 参见：https://laravel-admin.org/docs/zh/model-form
      * @return Form
      */
-    private function form()
+    protected function form()
     {
-        $form = new Form(new Category);
+        $form = new Form(new Category());
 
         $form->select('parent_id', '父级')
             ->options(Category::selectOptions())
