@@ -12,6 +12,10 @@ Route::group([
     'middleware' => config('admin.route.middleware'),
 ], function (Router $router) {
 
+    // 仪表盘
     $router->get('/', 'HomeController@index')->name('admin:dashboard');
-    
+
+    // 导航站分类管理
+    $router->resource('navigation/categories', 'Navigation\NavigationCategoriesController');
+
 });
