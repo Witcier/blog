@@ -9,7 +9,7 @@ use Dcat\Admin\Traits\ModelTree;
 class NavigationCategory extends Model
 {
     use HasFactory, ModelTree;
-    
+
     /**
      * 定义有多个子Category
      * @return HasMany
@@ -24,6 +24,6 @@ class NavigationCategory extends Model
      */
     public function sites()
     {
-        return $this->hasMany(Site::class);
+        return $this->hasMany(NavigationSite::class);
     }
 }

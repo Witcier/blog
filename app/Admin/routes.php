@@ -18,4 +18,7 @@ Route::group([
     // 导航站分类管理
     $router->resource('navigation/categories', 'Navigation\NavigationCategoriesController');
 
+    // 导航站网站地址管理
+    $router->resource('navigation/sites', 'Navigation\NavigationSitesController');
+
 });
