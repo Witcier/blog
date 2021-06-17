@@ -23,5 +23,41 @@ Route::group([
 
     // Wiki管理
     $router->resource('wiki', 'Wiki\WikiProjectsController');
+    $router->group([
+        'prefix' => 'wiki',
+        'namespace' => 'Wiki'
+    ], function (Router $router) {
+        // Wiki 编辑页面
+        $router->get('edit/{wikiProject}', 'WikiDocumentsController@edit')
+            ->name('wiki.document.edit')
+            ->where('id', '[0-9]+');
+        // 文档保存
+        $router->post('save/{wiki_project_id}', 'WikiDocumentsController@save')
+            ->name('wiki.document.save')
+            ->where('wiki_project_id', '[0-9]+');
+        // 新建文件、文件夹
+        $router->post('edit/create/{wiki_project_id}', 'WikiDocumentsController@create')
+            ->name('wiki.document.create')
+            ->where('wiki_project_id', '[0-9]+');;
+        // 文档排序
+        $router->post('sort/{wiki_project_id}', 'WikiDocumentsController@sort')
+            ->name('wiki.document.sort')
+            ->where('wiki_project_id', '[0-9]+');
+        // 文档重命名
+        $router->post('rename/{wiki_project_id}/{doc_id}', 'WikiDocumentsController@rename')
+            ->name('wiki.document.rename')
+            ->where('wiki_project_id', '[0-9]+')
+            ->where('doc_id', '[0-9]+');
+        // 文档删除
+        $router->post('delete/{wiki_project_id}', 'WikiDocumentsController@delete')
+            ->name('wiki.document.delete')
+            ->where('wiki_project_id', '[0-9]+');
+        // 图片附件上传
+        $router->post('upload/img', 'WikiAssetUploadController@uploadImg')
+            ->name('wiki.document.upload.img');
+        // 文件附件上传
+        $router->post('upload/file', 'WikiAssetUploadController@uploadFile')
+            ->name('wiki.document.upload.file');
+    });
 
 });

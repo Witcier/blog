@@ -1,0 +1,94 @@
+.navbar.horizontal-menu.navbar-fixed-top + .page-content > .page-container > .sidebar-menu.fixed .sidebar-menu-inner {
+    top: 70px;
+}
+
+.box2 {
+    height: 75px;
+    cursor: pointer;
+    border-radius: 4px;
+    padding: 0px 30px 0px 30px;
+    border-radius: 4px;
+    margin: 20px 0 0 0;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+
+.box2:hover {
+    transform: translateY(-6px);
+    -webkit-transform: translateY(-6px);
+    -moz-transform: translateY(-6px);
+    box-shadow: 0 26px 40px -24px rgba(0, 36, 100, 0.3);
+    -webkit-box-shadow: 0 26px 40px -24px rgba(0, 36, 100, 0.3);
+    -moz-box-shadow: 0 26px 40px -24px rgba(0, 36, 100, 0.3);
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+
+.xe-widget.xe-conversations {
+    background: #2C2E2E;
+    position: relative;
+    margin-bottom: 0;
+    padding: 15px;
+}
+
+.xe-comment-entry img {
+    float: left;
+    display: block;
+    margin-right: 10px;
+}
+
+.xe-comment p {
+    margin-bottom: 0px;
+}
+
+.overflowClip_1 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #C6C9CF;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+}
+
+.overflowClip_1:hover {
+    color: #C6C9CF;
+}
+
+.overflowClip_2 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #6C757D;
+    margin-top: 5px;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+}
+
+.submit-tag {
+    margin-top: 50px;
+}
+
+.navigation-content {
+    height: 100%;
+    width: 100%;
+    padding: 30px 30px 0;
+}
+
+.navigation-category {
+    color: #989898;
+}
+
+.page-container .main-content {
+    /*底部版权高度 40px*/
+    padding: 0 0 40px;
+}
+
+.navigation-footer-container {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+}
