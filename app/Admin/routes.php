@@ -22,6 +22,6 @@ Route::group([
     $router->resource('navigation/sites', 'Navigation\NavigationSitesController');
 
     // Wiki管理
-    $router->resource('wiki', 'Wiki\WikiProjectController');
+    $router->resource('wiki', 'Wiki\WikiProjectsController');
 
 });
