@@ -5,10 +5,9 @@ namespace App\Admin\Controllers\Wiki;
 use App\Models\WikiProject;
 use Dcat\Admin\Form;
 use Dcat\Admin\Grid;
-use Dcat\Admin\Show;
 use Dcat\Admin\Http\Controllers\AdminController;
 
-class WikiProjectController extends AdminController
+class WikiProjectsController extends AdminController
 {
     /**
      * Make a grid builder.
