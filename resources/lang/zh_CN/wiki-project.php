@@ -1,8 +1,8 @@
 <?php 
 return [
     'labels' => [
-        'WikiProject' => 'WikiProject',
-        'wiki-project' => 'WikiProject',
+        'WikiProject' => 'Wiki 项目',
+        'wiki-project' => 'Wiki 项目',
     ],
     'fields' => [
         'name' => '项目名称',

@@ -14,7 +14,7 @@ class NavigationCategoriesController extends AdminController
 
     public function index(Content $content)
     {
-        return $content
+        return $content->header('导航-分类')
             ->description(trans('admin.list'))
             ->body($this->treeView());
     }

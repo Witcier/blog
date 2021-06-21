@@ -107,7 +107,6 @@ class NavigationSitesController extends AdminController
         $grid->describe('描述')->limit(40);
         $grid->url('地址');
 
-        $grid->toolsWithOutline(false);
         $grid->filter(function ($filter) {
             $filter->disableIdFilter();
 
@@ -118,6 +117,7 @@ class NavigationSitesController extends AdminController
         });
         
         $grid->showToolbar();
+        $grid->toolsWithOutline(false);
         $grid->disableViewButton();
 
         return $grid;

@@ -12,57 +12,57 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-// Route::get('/', 'HomeController@index');
+Route::get('/', 'HomeController@index');
 
-// // 导航站相关
-// Route::resource('/navigation', 'NavigationController');
+// 导航站相关
+Route::resource('/navigation', 'NavigationController');
 
-// // Wiki 相关
-// Route::group(['prefix' => 'wiki'], function () {
-//     // Wiki 首页
-//     Route::get('/', 'WikiController@index');
-//     // 获取指定文档内容
-//     Route::get('content/{project_id}/{doc_id}', 'WikiController@getContent')
-//         ->name('wiki.document.content')
-//         ->where('project_id', '[0-9]+')
-//         ->where('doc_id', '[0-9]+');
-//     // 文档列表展示
-//     Route::get('detail/{project_id}', 'WikiController@detail')
-//         ->name('wiki.document.detail')
-//         ->where('project_id', '[0-9]+');
-// });
+// Wiki 相关
+Route::group(['prefix' => 'wiki'], function () {
+    // Wiki 首页
+    Route::get('/', 'WikiController@index');
+    // 获取指定文档内容
+    Route::get('content/{project_id}/{doc_id}', 'WikiController@getContent')
+        ->name('wiki.document.content')
+        ->where('project_id', '[0-9]+')
+        ->where('doc_id', '[0-9]+');
+    // 文档列表展示
+    Route::get('detail/{project_id}', 'WikiController@detail')
+        ->name('wiki.document.detail')
+        ->where('project_id', '[0-9]+');
+});
 
-// // 博客配置
-// Route::group(['prefix' => 'blog'], function () {
-//     // 博客首页
-//     Route::get('/', 'BlogController@index');
-//     Route::get("/page/{page}", 'BlogController@getPageList')
-//         ->name('blog.page.list')
-//         ->where('page', '[0-9]+');
-//     // 博客详情页面
-//     Route::get("/detail/{doc_id}/{title}", 'BlogController@getArticleDetail')
-//         ->name('blog.article.detail')
-//         ->where('doc_id', '[0-9]+');
-// });
+// 博客配置
+Route::group(['prefix' => 'blog'], function () {
+    // 博客首页
+    Route::get('/', 'BlogController@index');
+    Route::get("/page/{page}", 'BlogController@getPageList')
+        ->name('blog.page.list')
+        ->where('page', '[0-9]+');
+    // 博客详情页面
+    Route::get("/detail/{doc_id}/{title}", 'BlogController@getArticleDetail')
+        ->name('blog.article.detail')
+        ->where('doc_id', '[0-9]+');
+});
 
-// // 思维导图
-// Route::group(['prefix' => 'xmind'], function () {
-//     // 关于首页
-//     Route::get('/', 'XMindController@index');
-//     Route::get('/content/{name}', 'XMindController@getContent');
-// });
+// 思维导图
+Route::group(['prefix' => 'xmind'], function () {
+    // 关于首页
+    Route::get('/', 'XMindController@index');
+    Route::get('/content/{name}', 'XMindController@getContent');
+});
 
-// // 留言板
-// Route::group(['prefix' => 'guestbook'], function () {
-//     // 关于首页
-//     Route::get('/', 'GuestBookController@index');
-// });
+// 留言板
+Route::group(['prefix' => 'guestbook'], function () {
+    // 关于首页
+    Route::get('/', 'GuestBookController@index');
+});
 
-// // 关于页面配置
-// Route::group(['prefix' => 'about'], function () {
-//     // 关于首页
-//     Route::get('/', 'AboutController@index');
-// });
+// 关于页面配置
+Route::group(['prefix' => 'about'], function () {
+    // 关于首页
+    Route::get('/', 'AboutController@index');
+});
 
 
 // 后台管理模块路由

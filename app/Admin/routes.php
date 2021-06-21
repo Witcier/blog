@@ -21,6 +21,15 @@ Route::group([
     // 导航站网站地址管理
     $router->resource('navigation/sites', 'Navigation\NavigationSitesController');
 
+    // 首页菜单配置
+    $router->resource('nav', 'Config\NavMenusController');
+
+    // 配置管理
+    $router->resource('config', 'Config\AdminConfigsController');
+
+    // 媒体管理
+    $router->resource('media', 'Media\MediasController');
+
     // Wiki管理
     $router->resource('wiki', 'Wiki\WikiProjectsController');
     $router->group([

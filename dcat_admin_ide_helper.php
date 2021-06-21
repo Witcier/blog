@@ -20,9 +20,12 @@ namespace Dcat\Admin {
      * @property Grid\Column|Collection created_at
      * @property Grid\Column|Collection updated_at
      * @property Grid\Column|Collection name
+     * @property Grid\Column|Collection path
+     * @property Grid\Column|Collection target
      * @property Grid\Column|Collection doc_count
      * @property Grid\Column|Collection type
      * @property Grid\Column|Collection sync_to_blog
+     * @property Grid\Column|Collection value
      * @property Grid\Column|Collection version
      * @property Grid\Column|Collection detail
      * @property Grid\Column|Collection is_enabled
@@ -37,7 +40,6 @@ namespace Dcat\Admin {
      * @property Grid\Column|Collection http_path
      * @property Grid\Column|Collection role_id
      * @property Grid\Column|Collection user_id
-     * @property Grid\Column|Collection value
      * @property Grid\Column|Collection username
      * @property Grid\Column|Collection password
      * @property Grid\Column|Collection avatar
@@ -65,9 +67,12 @@ namespace Dcat\Admin {
      * @method Grid\Column|Collection created_at(string $label = null)
      * @method Grid\Column|Collection updated_at(string $label = null)
      * @method Grid\Column|Collection name(string $label = null)
+     * @method Grid\Column|Collection path(string $label = null)
+     * @method Grid\Column|Collection target(string $label = null)
      * @method Grid\Column|Collection doc_count(string $label = null)
      * @method Grid\Column|Collection type(string $label = null)
      * @method Grid\Column|Collection sync_to_blog(string $label = null)
+     * @method Grid\Column|Collection value(string $label = null)
      * @method Grid\Column|Collection version(string $label = null)
      * @method Grid\Column|Collection detail(string $label = null)
      * @method Grid\Column|Collection is_enabled(string $label = null)
@@ -82,7 +87,6 @@ namespace Dcat\Admin {
      * @method Grid\Column|Collection http_path(string $label = null)
      * @method Grid\Column|Collection role_id(string $label = null)
      * @method Grid\Column|Collection user_id(string $label = null)
-     * @method Grid\Column|Collection value(string $label = null)
      * @method Grid\Column|Collection username(string $label = null)
      * @method Grid\Column|Collection password(string $label = null)
      * @method Grid\Column|Collection avatar(string $label = null)
@@ -115,9 +119,12 @@ namespace Dcat\Admin {
      * @property Show\Field|Collection created_at
      * @property Show\Field|Collection updated_at
      * @property Show\Field|Collection name
+     * @property Show\Field|Collection path
+     * @property Show\Field|Collection target
      * @property Show\Field|Collection doc_count
      * @property Show\Field|Collection type
      * @property Show\Field|Collection sync_to_blog
+     * @property Show\Field|Collection value
      * @property Show\Field|Collection version
      * @property Show\Field|Collection detail
      * @property Show\Field|Collection is_enabled
@@ -132,7 +139,6 @@ namespace Dcat\Admin {
      * @property Show\Field|Collection http_path
      * @property Show\Field|Collection role_id
      * @property Show\Field|Collection user_id
-     * @property Show\Field|Collection value
      * @property Show\Field|Collection username
      * @property Show\Field|Collection password
      * @property Show\Field|Collection avatar
@@ -160,9 +166,12 @@ namespace Dcat\Admin {
      * @method Show\Field|Collection created_at(string $label = null)
      * @method Show\Field|Collection updated_at(string $label = null)
      * @method Show\Field|Collection name(string $label = null)
+     * @method Show\Field|Collection path(string $label = null)
+     * @method Show\Field|Collection target(string $label = null)
      * @method Show\Field|Collection doc_count(string $label = null)
      * @method Show\Field|Collection type(string $label = null)
      * @method Show\Field|Collection sync_to_blog(string $label = null)
+     * @method Show\Field|Collection value(string $label = null)
      * @method Show\Field|Collection version(string $label = null)
      * @method Show\Field|Collection detail(string $label = null)
      * @method Show\Field|Collection is_enabled(string $label = null)
@@ -177,7 +186,6 @@ namespace Dcat\Admin {
      * @method Show\Field|Collection http_path(string $label = null)
      * @method Show\Field|Collection role_id(string $label = null)
      * @method Show\Field|Collection user_id(string $label = null)
-     * @method Show\Field|Collection value(string $label = null)
      * @method Show\Field|Collection username(string $label = null)
      * @method Show\Field|Collection password(string $label = null)
      * @method Show\Field|Collection avatar(string $label = null)

@@ -46,6 +46,7 @@ class WikiProjectsController extends AdminController
                 $actions->disableView();
             });
     
+            $grid->toolsWithOutline(false);
             $grid->disableFilter();
             $grid->disableRowSelector();
             $grid->disableColumnSelector();
