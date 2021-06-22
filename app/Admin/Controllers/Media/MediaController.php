@@ -7,9 +7,9 @@ use Illuminate\Http\Request;
 use Dcat\Admin\Layout\Content;
 use Illuminate\Routing\Controller;
 
-class MediasController extends Controller
+class MediaController extends Controller
 {
-    public function index(Request $request)
+    public function index(Request $request, Content $content)
     {
         return Admin::content(function (Content $content) use ($request) {
             $content->header('Media manager');
@@ -25,6 +25,14 @@ class MediasController extends Controller
                 'url'    => $manager->urls(),
             ]));
         });
+
+        return $content->header('Media manager')
+            ->body(view("laravel-admin-media::$view", [
+                'list'   => $manager->ls(),
+                'nav'    => $manager->navigation(),
+                'url'    => $manager->urls(),
+            ]));
+
     }
 
     public function download(Request $request)

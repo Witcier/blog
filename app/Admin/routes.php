@@ -28,7 +28,7 @@ Route::group([
     $router->resource('config', 'Config\AdminConfigsController');
 
     // 媒体管理
-    $router->resource('media', 'Media\MediasController');
+    $router->resource('media', 'Media\MediaController');
 
     // Wiki管理
     $router->resource('wiki', 'Wiki\WikiProjectsController');
