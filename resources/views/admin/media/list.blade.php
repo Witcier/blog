@@ -35,8 +35,8 @@
      }
 </style>
 
-<link rel="stylesheet" href="{{ asset('static-admin/wiki/css/app.css') }}">
-<script src="{{ asset('static-third/ztree/js/jquery.ztree.core.min.js') }}"></script>
+<link rel="stylesheet" href="{{ asset('static-media/css/app.css') }}">
+{{-- <script src="{{ asset('static-media/js/app.js') }}"></script> --}}
 
 <div class="row">
     <!-- /.col -->
@@ -86,7 +86,6 @@
                                 @endunless
                                 <a class="btn btn-default" data-toggle="modal" data-target="#urlModal" data-url="{{ $item['url'] }}"><i class="fa fa-internet-explorer"></i></a>
                             </div>
-
                         </td>
                         <td>{{ $item['time'] }}&nbsp;</td>
                         <td>{{ $item['size'] }}&nbsp;</td>

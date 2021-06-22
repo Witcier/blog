@@ -52,6 +52,9 @@
      }
 </style>
 
+<link rel="stylesheet" href="{{ asset('static-media/css/app.css') }}">
+{{-- <script src="{{ asset('static-media/js/app.js') }}"></script> --}}
+
 <div class="row">
     <!-- /.col -->
     <div class="col-md-12">
@@ -79,21 +82,22 @@
                                     {{ $item['icon'] }} {{ basename($item['name']) }}
                                 </a>
                                 <span class="file-size">
-                                  {{ $item['size'] }}&nbsp;
-
-                                    <div class="btn-group btn-group-xs pull-right">
-                                        <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown">
+                                    {{ $item['size'] }}
+                                    <br>
+                                    <div class="btn-group btn-group-xs" style="width: 100%">
+                                        <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" style="background-color: #f4f4f4">
+                                            操作 
                                             <span class="caret"></span>
                                             <span class="sr-only">Toggle Dropdown</span>
                                         </button>
-                                        <ul class="dropdown-menu" role="menu">
-                                            <li><a href="#" class="file-rename" data-toggle="modal" data-target="#moveModal" data-name="{{ $item['name'] }}">Rename & Move</a></li>
-                                            <li><a href="#" class="file-delete" data-path="{{ $item['name'] }}">Delete</a></li>
+                                        <ul class="dropdown-menu" role="menu" style="background-color: #f4f4f4">
+                                            <li><a href="#" class="file-rename file-name" data-toggle="modal" data-target="#moveModal" data-name="{{ $item['name'] }}" style="text-align:center">重命名&修改路径</a></li>
+                                            <li><a href="#" class="file-delete file-name" data-path="{{ $item['name'] }}" style="text-align:center">删除</a></li>
                                             @unless($item['isDir'])
-                                            <li><a target="_blank" href="{{ $item['download'] }}">Download</a></li>
+                                            <li><a target="_blank" class="file-name" href="{{ $item['download'] }}" style="text-align:center">下载</a></li>
                                             @endunless
                                             <li class="divider"></li>
-                                            <li><a href="#" data-toggle="modal" data-target="#urlModal" data-url="{{ $item['url'] }}">Url</a></li>
+                                            <li><a href="#" class="file-name" data-toggle="modal" data-target="#urlModal" data-url="{{ $item['url'] }}" style="text-align:center">地址</a></li>
                                         </ul>
                                     </div>
                                 </span>

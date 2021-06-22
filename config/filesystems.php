@@ -49,6 +49,13 @@ return [
             'url' => env('APP_URL') . '/uploads',
         ],
 
+        'media-store' => [
+            'driver' => 'local',
+            'root' => public_path('media-store'),
+            'visibility' => 'public',
+            'url' => env('APP_URL') . '/media-store',
+        ],
+
         's3' => [
             'driver' => 's3',
             'key' => env('AWS_ACCESS_KEY_ID'),

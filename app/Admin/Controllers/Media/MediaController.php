@@ -11,7 +11,7 @@ class MediaController extends Controller
     public function index(Content $content,Request $request)
     {
         $path = $request->get('path', '/');
-        $view = $request->get('view', 'table');
+        $view = $request->get('view', 'list');
         $manager = new MediaManager($path);
 
         return $content

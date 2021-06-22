@@ -45,10 +45,19 @@ mix.styles([
     'resources/assets/common/css/common.css',
 ], 'public/static-common/css/common.css');
 
-// 欢迎页资源
+// 
 mix.styles([
     'resources/assets/welcome/css/app.css'
 ], 'public/static-welcome/css/app.css');
+
+// 媒体管理资源
+mix.styles([
+    'resources/assets/media/css/app.css'
+], 'public/static-media/css/app.css');
+
+mix.scripts([
+    'resources/assets/media/js/app.js'
+], 'public/static-media/js/app.js');
 
 // 错误页
 mix.styles([

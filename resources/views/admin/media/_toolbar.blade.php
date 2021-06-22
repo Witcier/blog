@@ -5,9 +5,11 @@
             <a href="" type="button" class="btn btn-default btn media-reload" title="Refresh">
                 <i class="fa fa-refresh"></i>
             </a>
-            <!--                        <a type="button" class="btn btn-default btn file-delete-multiple" title="Delete">
-                                        <i class="fa fa-trash-o"></i>
-                                    </a>-->
+        </div>
+        <div class="btn-group">
+            <a type="button" class="btn btn-default btn file-delete-multiple" title="Delete">
+                <i class="fa fa-trash-o"></i>
+            </a>
         </div>
         <!-- /.btn-group -->
         <label class="btn btn-primary"{{-- data-toggle="modal" data-target="#uploadModal"--}}>

@@ -17,7 +17,12 @@ class MediaManager extends Controller
     /**
      * @var string
      */
-    protected $path = 'app/public/uploads';
+    protected $path = '/';
+
+    /**
+     * @var string
+     */
+    protected $disk = 'admin';
 
     /**
      * @var \Illuminate\Filesystem\FilesystemAdapter
@@ -44,28 +49,28 @@ class MediaManager extends Controller
      *
      * @param string $path
      */
-    public function __construct($path = 'app/public/uploads')
+    public function __construct($path = '/', $disk = 'admin')
     {
         $this->path = $path;
+
+        $this->disk = $disk;
 
         $this->initStorage();
     }
 
     private function initStorage()
     {
-        $disk = config('admin.upload.admin');
-
-        $this->storage = Storage::disk($disk);
+        $this->storage = Storage::disk($this->disk);
 
         if (!$this->storage->getDriver()->getAdapter() instanceof Local) {
-            Handler::error('Error', '[laravel-admin-ext/media-manager] only works for local storage.');
+            Handler::report('Error', '[laravel-admin-ext/media-manager] only works for local storage.');
         }
     }
 
     public function ls()
     {
         if (!$this->exists()) {
-            Handler::error('Error', "File or directory [$this->path] not exists");
+            Handler::report('Error', "File or directory [$this->path] not exists");
 
             return [];
         }
