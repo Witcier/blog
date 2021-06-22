@@ -2,27 +2,26 @@
 
 namespace App\Admin\Controllers\Media;
 
-use Dcat\Admin\Admin;
-use Illuminate\Http\Request;
 use Dcat\Admin\Layout\Content;
+use Dcat\Admin\Admin;
 use Illuminate\Routing\Controller;
-
+use Illuminate\Http\Request;
 class MediaController extends Controller
 {
-    public function index(Request $request, Content $content)
+    public function index(Content $content,Request $request)
     {
         $path = $request->get('path', '/');
         $view = $request->get('view', 'table');
-
         $manager = new MediaManager($path);
 
-        return $content->header('Media manager')
-            ->body(view("laravel-admin-media::$view", [
+        return $content
+            ->title('文件管理')
+            ->description('文件列表')
+            ->body(Admin::view("admin.media.$view", [
                 'list'   => $manager->ls(),
                 'nav'    => $manager->navigation(),
                 'url'    => $manager->urls(),
             ]));
-
     }
 
     public function download(Request $request)

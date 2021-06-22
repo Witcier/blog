@@ -28,7 +28,17 @@ Route::group([
     $router->resource('config', 'Config\AdminConfigsController');
 
     // 媒体管理
-    $router->resource('media', 'Media\MediaController');
+    $router->get('media', 'Media\MediaController@index')->name('media-index');
+
+    $router->get('media/download', 'Media\MediaController@download')->name('media-download');
+
+    $router->delete('media/delete', 'Media\MediaController@delete')->name('media-delete');
+
+    $router->put('media/move',  'Media\MediaController@move')->name('media-move');
+
+    $router->post('media/upload',  'Media\MediaController@upload')->name('media-upload');
+
+    $router->post('media/folder',  'Media\MediaController@newFolder')->name('media-new-folder');
 
     // Wiki管理
     $router->resource('wiki', 'Wiki\WikiProjectsController');
