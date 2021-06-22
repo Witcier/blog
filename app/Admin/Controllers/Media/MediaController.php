@@ -11,20 +11,10 @@ class MediaController extends Controller
 {
     public function index(Request $request, Content $content)
     {
-        return Admin::content(function (Content $content) use ($request) {
-            $content->header('Media manager');
+        $path = $request->get('path', '/');
+        $view = $request->get('view', 'table');
 
-            $path = $request->get('path', '/');
-            $view = $request->get('view', 'table');
-
-            $manager = new MediaManager($path);
-
-            $content->body(view("laravel-admin-media::$view", [
-                'list'   => $manager->ls(),
-                'nav'    => $manager->navigation(),
-                'url'    => $manager->urls(),
-            ]));
-        });
+        $manager = new MediaManager($path);
 
         return $content->header('Media manager')
             ->body(view("laravel-admin-media::$view", [

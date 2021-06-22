@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f2a0e93eee2b5a3aff6e73141ed81220",
+    "content-hash": "ad2e37b913031950bcca7d035cdfc217",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -117,6 +117,61 @@
                 }
             ],
             "time": "2021-01-20T22:51:39+00:00"
+        },
+        {
+            "name": "celaraze/dcat-extension-plus",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/celaraze/dcat-extension-plus.git",
+                "reference": "94093cf8c99d4b903d81d499119ff1c3d973e0fe"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/celaraze/dcat-extension-plus/zipball/94093cf8c99d4b903d81d499119ff1c3d973e0fe",
+                "reference": "94093cf8c99d4b903d81d499119ff1c3d973e0fe",
+                "shasum": ""
+            },
+            "require": {
+                "dcat/laravel-admin": "~2.0",
+                "php": ">=7.3.0"
+            },
+            "default-branch": true,
+            "type": "library",
+            "extra": {
+                "dcat-admin": "Celaraze\\DcatPlus\\ServiceProvider",
+                "laravel": {
+                    "providers": [
+                        "Celaraze\\DcatPlus\\ServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Celaraze\\DcatPlus\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Celaraze",
+                    "email": "celaraze@qq.com"
+                }
+            ],
+            "description": "增强 DcatAdmin 的使用体验。",
+            "homepage": "https://github.com/celaraze/dcat-extension-plus",
+            "keywords": [
+                "dcat-admin",
+                "extension"
+            ],
+            "support": {
+                "issues": "https://github.com/celaraze/dcat-extension-plus/issues",
+                "source": "https://github.com/celaraze/dcat-extension-plus/tree/master"
+            },
+            "time": "2021-05-20T03:02:30+00:00"
         },
         {
             "name": "dcat/laravel-admin",
@@ -7544,7 +7599,9 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "celaraze/dcat-extension-plus": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
