@@ -115,9 +115,8 @@
             var path = $('.goto-url input').val();
             $.pjax({container:'#pjax-container', url: "{{ $url['index'] }}?path=" + path });
         });
-        $('.file-select>input').iCheck({checkboxClass:'icheckbox_minimal-blue'});
+        // $('.file-select>input').iCheck({checkboxClass:'icheckbox_minimal-blue'});
         $('.file-delete-multiple').click(function () {
-            console.log('2222222222222222222222222');
             var files = $(".file-select input:checked").map(function(){
                 return $(this).val();
             }).toArray();

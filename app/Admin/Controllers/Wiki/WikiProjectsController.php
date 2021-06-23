@@ -9,6 +9,8 @@ use Dcat\Admin\Http\Controllers\AdminController;
 
 class WikiProjectsController extends AdminController
 {
+    protected $title = 'Wiki 项目';
+
     /**
      * Make a grid builder.
      *
@@ -34,7 +36,7 @@ class WikiProjectsController extends AdminController
                 0 => 'danger',
                 1 => 'success',
             ]);
-            $grid->column('thumb')->image(config('filesystems.disks.admin.url'), 50, 50);
+            $grid->thumb('封面')->image(config('filesystems.disks.admin.url'), 50, 50);
             $grid->created_at('创建时间')->date('Y-m-d');
             $grid->updated_at('修改时间')->date('Y-m-d');
     

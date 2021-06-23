@@ -56,7 +56,8 @@ mix.styles([
 ], 'public/static-media/css/app.css');
 
 mix.scripts([
-    'resources/assets/media/js/app.js'
+    'resources/assets/media/js/index.js',
+    'resources/assets/media/js/icheck.js'
 ], 'public/static-media/js/app.js');
 
 // 错误页
