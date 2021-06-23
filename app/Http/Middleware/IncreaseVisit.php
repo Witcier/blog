@@ -18,7 +18,7 @@ class IncreaseVisit
      */
     public function handle(Request $request, Closure $next)
     {
-        $location = Route::currentRouteName();
+        $location = explode('.', Route::currentRouteName())[0];
         $ip = $request->ip();
 
         dispatch(new IncreaseStaticVisit($location, $ip));

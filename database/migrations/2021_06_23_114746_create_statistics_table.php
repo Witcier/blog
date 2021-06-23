@@ -24,18 +24,11 @@ class CreateStatisticsTable extends Migration
             $table->timestamps();
         });
 
-        Schema::create('statistic_uv', function (Blueprint $table) {
+        Schema::create('statistic_visit', function (Blueprint $table) {
             $table->id();
             $table->string('scene')->comment("场景值");
             $table->string('location')->comment("位置（二级分类）");
             $table->unsignedInteger('uv')->default(0)->comment("UV数");
-            $table->timestamps();
-        });
-
-        Schema::create('statistic_pv', function (Blueprint $table) {
-            $table->id();
-            $table->string('scene')->comment("场景值");
-            $table->string('location')->comment("位置（二级分类）");
             $table->integer('pv')->default(0)->comment("PV数");
             $table->timestamps();
         });
