@@ -53,9 +53,7 @@
                     <tbody>
                     <tr>
                         <th width="40px;">
-                            <span class="file-select-all">
-                                <input type="checkbox" value=""/>
-                            </span>
+
                         </th>
                         <th>{{ trans('admin.name') }}</th>
                         <th></th>
