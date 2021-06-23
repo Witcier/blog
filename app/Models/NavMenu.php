@@ -17,14 +17,4 @@ class NavMenu extends Model
      * @var int 新窗口打开
      */
     const TYPE_TARGET_BLANK = 1;
-
-    /**
-     * 获取菜单
-     * @return HomeNavMenu[]|\Illuminate\Database\Eloquent\Collection
-     */
-    static function getNavMenu()
-    {
-        return HomeNavMenu::all()
-            ->sortBy('order');
-    }
 }

@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', 'HomeController@index');
+Route::get('/', 'HomeController@index')->name('welcome');
 
 // 导航站相关
 Route::resource('/navigation', 'NavigationController');
@@ -20,7 +20,7 @@ Route::resource('/navigation', 'NavigationController');
 // Wiki 相关
 Route::group(['prefix' => 'wiki'], function () {
     // Wiki 首页
-    Route::get('/', 'WikiController@index');
+    Route::get('/', 'WikiController@index')->name('wiki');
     // 获取指定文档内容
     Route::get('content/{project_id}/{doc_id}', 'WikiController@getContent')
         ->name('wiki.document.content')
@@ -35,7 +35,7 @@ Route::group(['prefix' => 'wiki'], function () {
 // 博客配置
 Route::group(['prefix' => 'blog'], function () {
     // 博客首页
-    Route::get('/', 'BlogController@index');
+    Route::get('/', 'BlogController@index')->name('blog');
     Route::get("/page/{page}", 'BlogController@getPageList')
         ->name('blog.page.list')
         ->where('page', '[0-9]+');
@@ -48,20 +48,20 @@ Route::group(['prefix' => 'blog'], function () {
 // 思维导图
 Route::group(['prefix' => 'xmind'], function () {
     // 关于首页
-    Route::get('/', 'XMindController@index');
+    Route::get('/', 'XMindController@index')->name('xmind');
     Route::get('/content/{name}', 'XMindController@getContent');
 });
 
 // 留言板
 Route::group(['prefix' => 'guestbook'], function () {
     // 关于首页
-    Route::get('/', 'GuestBookController@index');
+    Route::get('/', 'GuestBookController@index')->name('guestbook');
 });
 
 // 关于页面配置
 Route::group(['prefix' => 'about'], function () {
     // 关于首页
-    Route::get('/', 'AboutController@index');
+    Route::get('/', 'AboutController@index')->name('about');
 });
 
 
