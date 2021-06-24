@@ -24,6 +24,10 @@ class Visitor extends Model
         'date'
     ];
 
+    public const Scence_Array = [
+        'welcome', 'blog', 'wiki', 'navigate', 'xmind', 'guest_book', 'about',
+    ];
+
     public static function isVisited($location, $ip)
     {
         $visit = static::query()

@@ -37,18 +37,9 @@ class IncreaseStaticVisit implements ShouldQueue
      */
     public function handle()
     {
-        $visitor = new Visitor([
-            'name' => EventEnum::NAME_VISITOR,
-            'scene' => EventEnum::SCENE_MAIN_PAGE,
-            'location' => $this->location,
-            'ip' => $this->ip,
-            'date' => Carbon::now(),
-        ]);
-        
-        $visitor->save();
         $visit = Visit::firstOrCreate(
             [
-                'scene' => $visitor->scene,
+                'scene' => EventEnum::SCENE_MAIN_PAGE,
                 'location' => $this->location,
             ]
         );
@@ -58,6 +49,16 @@ class IncreaseStaticVisit implements ShouldQueue
         if (Visitor::isVisited($this->location, $this->ip)) {
             // 更新UV数据
             $visit->increment('uv');
+
+            $visitor = new Visitor([
+                'name' => EventEnum::NAME_VISITOR,
+                'scene' => EventEnum::SCENE_MAIN_PAGE,
+                'location' => $this->location,
+                'ip' => $this->ip,
+                'date' => Carbon::now(),
+            ]);
+            
+            $visitor->save();
         }
     }
 }
