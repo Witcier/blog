@@ -16,10 +16,10 @@ Route::group([
     $router->get('/', 'HomeController@index')->name('admin:dashboard');
 
     // 导航站分类管理
-    $router->resource('navigation/categories', 'Navigation\NavigationCategoriesController');
+    $router->resource('navigation/categories', 'Navigation\CategoriesController');
 
     // 导航站网站地址管理
-    $router->resource('navigation/sites', 'Navigation\NavigationSitesController');
+    $router->resource('navigation/sites', 'Navigation\SitesController');
 
     // 首页菜单配置
     $router->resource('nav', 'Nav\MenusController');

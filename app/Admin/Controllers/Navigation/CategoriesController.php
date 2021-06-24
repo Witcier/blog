@@ -2,13 +2,13 @@
 
 namespace App\Admin\Controllers\Navigation;
 
-use App\Models\NavigationCategory;
+use App\Models\Navigation\Category;
 use Dcat\Admin\Form;
 use Dcat\Admin\Layout\Content;
 use Dcat\Admin\Tree;
 use Dcat\Admin\Http\Controllers\AdminController;
 
-class NavigationCategoriesController extends AdminController
+class CategoriesController extends AdminController
 {
     protected $title = '导航-分类';
 
@@ -21,7 +21,7 @@ class NavigationCategoriesController extends AdminController
 
     protected function treeView()
     {
-        return new Tree(new NavigationCategory(), function (Tree $tree) {
+        return new Tree(new Category(), function (Tree $tree) {
             $tree->disableCreateButton();
         });
     }
@@ -45,10 +45,10 @@ class NavigationCategoriesController extends AdminController
      */
     protected function form()
     {
-        $form = new Form(new NavigationCategory());
+        $form = new Form(new Category());
 
         $form->select('parent_id', '父级')
-            ->options(NavigationCategory::selectOptions())
+            ->options(Category::selectOptions())
             ->rules('required');
         $form->text('title', '标题')
             ->rules('required|max:50')

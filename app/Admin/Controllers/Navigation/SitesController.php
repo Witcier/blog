@@ -2,8 +2,8 @@
 
 namespace App\Admin\Controllers\Navigation;
 
-use App\Models\NavigationCategory;
-use App\Models\NavigationSite;
+use App\Models\Navigation\Category;
+use App\Models\Navigation\Site;
 use Dcat\Admin\Http\Controllers\HasResourceActions;
 use Dcat\Admin\Form;
 use Dcat\Admin\Grid;
@@ -11,7 +11,7 @@ use Dcat\Admin\Layout\Content;
 use Dcat\Admin\Show;
 use Dcat\Admin\Http\Controllers\AdminController;
 
-class NavigationSitesController extends AdminController
+class SitesController extends AdminController
 {
     use HasResourceActions;
 
@@ -25,21 +25,6 @@ class NavigationSitesController extends AdminController
         return $content
             ->header('网站管理')
             ->body($this->grid());
-    }
-
-    /**
-     * Show interface.
-     *
-     * @param mixed $id
-     * @param Content $content
-     * @return Content
-     */
-    public function show($id, Content $content)
-    {
-        return $content
-            ->header('Detail')
-            ->description('description')
-            ->body($this->detail($id));
     }
 
     /**
@@ -70,35 +55,12 @@ class NavigationSitesController extends AdminController
     }
 
     /**
-     * Make a show builder.
-     *
-     * @param mixed $id
-     * @return Show
-     */
-    protected function detail($id)
-    {
-        $show = new Show(NavigationSite::findOrFail($id));
-
-        $show->id('ID');
-        $show->order('顺序');
-        $show->category_id('分类');
-        $show->title('标题');
-        $show->thumb('图标');
-        $show->describe('Describe');
-        $show->url('Url');
-        $show->created_at('Created at');
-        $show->updated_at('Updated at');
-
-        return $show;
-    }
-
-    /**
      * 网站列表展示
      * @return Grid
      */
     private function grid()
     {
-        $grid = new Grid(new NavigationSite());
+        $grid = new Grid(new Site());
 
         $grid->model()->with(['category']);
         $grid->order('顺序');
@@ -110,7 +72,7 @@ class NavigationSitesController extends AdminController
         $grid->filter(function ($filter) {
             $filter->disableIdFilter();
 
-            $categories = NavigationCategory::all()->pluck('title', 'id');
+            $categories = Category::all()->pluck('title', 'id');
             $filter->equal('navigation_category_id', '分类')->select($categories);
 
             $filter->like('title', '标题');
@@ -130,10 +92,10 @@ class NavigationSitesController extends AdminController
      */
     private function form()
     {
-        $form = new Form(new NavigationSite());
+        $form = new Form(new Site());
 
         $form->select('navigation_category_id', '分类')
-            ->options(NavigationCategory::selectOptions())
+            ->options(Category::selectOptions())
             ->rules('required');
         $form->text('title', '标题')
             ->attribute('autocomplete', 'off')

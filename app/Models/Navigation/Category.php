@@ -1,14 +1,16 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Navigation;
 
+use Dcat\Admin\Traits\ModelTree;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Dcat\Admin\Traits\ModelTree;
 
-class NavigationCategory extends Model
+class Category extends Model
 {
     use HasFactory, ModelTree;
+
+    protected $table = 'navigation_categories';
 
     /**
      * 定义有多个子Category
@@ -16,7 +18,7 @@ class NavigationCategory extends Model
      */
     public function children()
     {
-        return $this->hasMany(NavigationCategory::class, 'parent_id');
+        return $this->hasMany(Category::class, 'parent_id');
     }
 
     /**
@@ -24,6 +26,6 @@ class NavigationCategory extends Model
      */
     public function sites()
     {
-        return $this->hasMany(NavigationSite::class);
+        return $this->hasMany(Site::class);
     }
 }
