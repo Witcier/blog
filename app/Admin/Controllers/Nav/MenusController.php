@@ -1,14 +1,13 @@
 <?php
 
-namespace App\Admin\Controllers\config;
+namespace App\Admin\Controllers\Nav;
 
-use App\Models\NavMenu;
+use App\Models\Nav\Menu;
 use Dcat\Admin\Form;
 use Dcat\Admin\Grid;
-use Dcat\Admin\Show;
 use Dcat\Admin\Http\Controllers\AdminController;
 
-class NavMenusController extends AdminController
+class MenusController extends AdminController
 {
     /**
      * Make a grid builder.
@@ -17,7 +16,7 @@ class NavMenusController extends AdminController
      */
     protected function grid()
     {
-        return Grid::make(new NavMenu(), function (Grid $grid) {
+        return Grid::make(new Menu(), function (Grid $grid) {
 
             $grid->name('菜单名称');
             $grid->path('路由路径');
@@ -49,12 +48,12 @@ class NavMenusController extends AdminController
      */
     protected function form()
     {
-        return Form::make(new NavMenu(), function (Form $form) {
+        return Form::make(new Menu(), function (Form $form) {
             $form->text('name', "菜单名称")->required();
             $form->text('path', '路由路径')->required();
             $form->radio('target', '打开方式')
-                ->options([NavMenu::TYPE_TARGET_SELF => '原窗口', NavMenu::TYPE_TARGET_BLANK => '新窗口'])
-                ->default(NavMenu::TYPE_TARGET_SELF)
+                ->options([Menu::TYPE_TARGET_SELF => '原窗口', Menu::TYPE_TARGET_BLANK => '新窗口'])
+                ->default(Menu::TYPE_TARGET_SELF)
                 ->required();
             $form->number('order', "显示顺序")
                 ->default(1)

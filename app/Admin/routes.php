@@ -22,7 +22,7 @@ Route::group([
     $router->resource('navigation/sites', 'Navigation\NavigationSitesController');
 
     // 首页菜单配置
-    $router->resource('nav', 'Config\NavMenusController');
+    $router->resource('nav', 'Nav\MenusController');
 
     // 配置管理
     $router->resource('config', 'Config\AdminConfigController');

@@ -1,14 +1,15 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Nav;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class NavMenu extends Model
+class Menu extends Model
 {
     use HasFactory;
 
+    protected $table = 'nav_menus';
     /**
      * @var int 当前窗口打开
      */
@@ -17,4 +18,8 @@ class NavMenu extends Model
      * @var int 新窗口打开
      */
     const TYPE_TARGET_BLANK = 1;
+
+    protected $fillable = [
+        'name', 'path', 'order', 'target',
+    ];
 }
