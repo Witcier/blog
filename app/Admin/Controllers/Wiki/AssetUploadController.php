@@ -11,7 +11,7 @@ use League\Flysystem\Exception;
  * Class WikiAssetUploadController
  * @package App\Http\Controllers\Admin\Wiki
  */
-class WikiAssetUploadController extends BaseController
+class AssetUploadController extends BaseController
 {
     /**
      * 上传图片

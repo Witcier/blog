@@ -1,13 +1,15 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Wiki;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class WikiDocument extends Model
+class Document extends Model
 {
     use HasFactory;
+
+    protected $table = 'wiki_documents';
 
     const TYPE_FILE = 0;
     const TYPE_DIR = 1;
@@ -23,7 +25,7 @@ class WikiDocument extends Model
             return [];
         }
 
-        $tree = WikiDocument::where('wiki_project_id', '=', $projectId)
+        $tree = static::where('wiki_project_id', '=', $projectId)
             ->select('id', 'name', 'type', 'parent_id')
             ->orderBy('sort', 'ASC')
             ->get();

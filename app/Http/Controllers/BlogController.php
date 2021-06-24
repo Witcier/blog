@@ -4,10 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\ErrorDesc;
 use App\Model\Admin\HomeNavMenu;
-use App\Model\Event\Event;
-use App\Model\Wiki\WikiDocument;
-use App\Model\Wiki\WikiProject;
-use App\Util\StatisticUtil;
+use App\Models\Wiki\Document;
+use App\Models\Wiki\Project;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\DB;
 
@@ -21,7 +19,7 @@ class BlogController extends BaseController
     /**
      * @var int 分页，每页的数量
      */
-    private static $PAGE_SIZE = 30;
+    private const PAGE_SIZE = 30;
 
     /**
      * 首页
@@ -29,9 +27,7 @@ class BlogController extends BaseController
      */
     public function index()
     {
-        StatisticUtil::recordVisitorEvent(Event::$SCENE_MAIN_PAGE, Event::$LOCATION_BLOG);
-
-        $document = $this->getBlogArticle(1, self::$PAGE_SIZE);
+        $document = $this->getBlogArticle(1, self::PAGE_SIZE);
 
         if (empty($document)) {
             abort(404);
@@ -46,7 +42,7 @@ class BlogController extends BaseController
             $documentCount += $item->count;
         }
         // 计算分页数量
-        $pageCount = ceil($documentCount / self::$PAGE_SIZE);
+        $pageCount = ceil($documentCount / self::PAGE_SIZE);
 
         return view('blog.index')
             ->with('navMenu', HomeNavMenu::getNavMenu())
@@ -64,7 +60,7 @@ class BlogController extends BaseController
      */
     public function getPageList($page)
     {
-        $document = $this->getBlogArticle($page, self::$PAGE_SIZE);
+        $document = $this->getBlogArticle($page, self::PAGE_SIZE);
         if (empty($document)) {
             abort(404);
         }
@@ -79,14 +75,14 @@ class BlogController extends BaseController
      */
     public function getArticleDetail($doc_id, $title)
     {
-        $doc = WikiDocument::where('name', '=', $title)
+        $doc = Document::where('name', '=', $title)
             ->where('id', '=', $doc_id)
             ->first();
         if (empty($doc)) {
             abort(404);
         }
-        $project = WikiProject::where('id', '=', $doc->project_id)->first();
-        if (empty($project) || $project->type == WikiProject::$TYPE_PRIVATE) {
+        $project = Project::where('id', '=', $doc->project_id)->first();
+        if (empty($project) || $project->type == Project::TYPE_PRIVATE) {
             abort(403);
         }
         return view('blog.detail.index')
@@ -101,11 +97,11 @@ class BlogController extends BaseController
      */
     private function getBlogArticle($page, $size)
     {
-        $document = WikiDocument::where('wiki_document.type', '=', WikiDocument::$TYPE_FILE)
+        $document = Document::where('wiki_document.type', '=', Document::TYPE_FILE)
             ->whereIn('wiki_document.project_id', function ($query) {
                 $query->select('id')
                     ->from('wiki_project')
-                    ->where('type', '=', WikiProject::$TYPE_PUBLIC)
+                    ->where('type', '=', Project::TYPE_PUBLIC)
                     ->where('sync_to_blog', '=', true);
             })
             ->leftJoin('wiki_document as B', 'wiki_document.parent_id', '=', 'B.id')
@@ -132,11 +128,11 @@ class BlogController extends BaseController
      */
     private function getBlogProject()
     {
-        return WikiDocument::where('wiki_document.type', '=', WikiDocument::$TYPE_FILE)
+        return Document::where('wiki_document.type', '=', Document::TYPE_FILE)
             ->whereIn('project_id', function ($query) {
                 $query->select('id')
                     ->from('wiki_project')
-                    ->where('type', '=', WikiProject::$TYPE_PUBLIC)
+                    ->where('type', '=', Project::TYPE_PUBLIC)
                     ->where('sync_to_blog', '=', true);
             })
             ->join('wiki_project', 'wiki_project.id', '=', 'wiki_document.project_id')

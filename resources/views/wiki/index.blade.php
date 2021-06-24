@@ -8,7 +8,7 @@
         <div class="fill-and-overflow-auto">
             <div class="col-sm-10 col-lg-10 col-sm-offset-1 wiki-project-container">
                 @php
-                    $mediaStore = config('mediastore.name');
+                    $mediaStore = config('filesystems.disks.admin.url');
                 @endphp
 
                 @foreach($projects as $project)

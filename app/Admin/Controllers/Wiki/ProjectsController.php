@@ -2,12 +2,12 @@
 
 namespace App\Admin\Controllers\Wiki;
 
-use App\Models\WikiProject;
+use App\Models\Wiki\Project;
 use Dcat\Admin\Form;
 use Dcat\Admin\Grid;
 use Dcat\Admin\Http\Controllers\AdminController;
 
-class WikiProjectsController extends AdminController
+class ProjectsController extends AdminController
 {
     protected $title = 'Wiki 项目';
 
@@ -18,13 +18,13 @@ class WikiProjectsController extends AdminController
      */
     protected function grid()
     {
-        return Grid::make(new WikiProject(), function (Grid $grid) {
+        return Grid::make(new Project(), function (Grid $grid) {
             $grid->id('项目ID');
             $grid->name('项目名称');
             $grid->description('项目描述');
             $grid->doc_count('文档数量');
             $grid->type('类型')->display(function ($value) {
-               return WikiProject::$typeMap[$value];
+               return Project::$typeMap[$value];
             })->label([
                 0 => 'danger',
                 1 => 'success',
@@ -62,12 +62,12 @@ class WikiProjectsController extends AdminController
      */
     protected function form()
     {
-        return Form::make(new WikiProject(), function (Form $form) {
+        return Form::make(new Project(), function (Form $form) {
             $form->text('name', "项目名称")->required();
             $form->textarea('description', "项目描述")->required();
             $form->radio('type', "类型")
-                ->options([WikiProject::TYPE_PUBLIC => '公开', WikiProject::TYPE_PRIVATE => '私密'])
-                ->default(WikiProject::TYPE_PUBLIC)
+                ->options([Project::TYPE_PUBLIC => '公开', Project::TYPE_PRIVATE => '私密'])
+                ->default(Project::TYPE_PUBLIC)
                 ->required();
     
             $form->radio("sync_to_blog", "同步到博客")
@@ -79,7 +79,8 @@ class WikiProjectsController extends AdminController
             $form->image('thumb', '封面图')
                 ->help('图片尺寸需要 300*200')
                 ->autoUpload()
-                ->uniqueName();
+                ->uniqueName()
+                ->required();
     
             $form->footer(function ($footer) {
                 // 去掉`查看`checkbox

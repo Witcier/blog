@@ -41,41 +41,41 @@ Route::group([
     $router->post('media/folder',  'Media\MediaController@newFolder')->name('media-new-folder');
 
     // Wiki管理
-    $router->resource('wiki', 'Wiki\WikiProjectsController');
+    $router->resource('wiki', 'Wiki\ProjectsController');
     $router->group([
         'prefix' => 'wiki',
         'namespace' => 'Wiki'
     ], function (Router $router) {
         // Wiki 编辑页面
-        $router->get('edit/{wikiProject}', 'WikiDocumentsController@edit')
+        $router->get('edit/{Project}', 'DocumentsController@edit')
             ->name('wiki.document.edit')
             ->where('id', '[0-9]+');
         // 文档保存
-        $router->post('save/{wiki_project_id}', 'WikiDocumentsController@save')
+        $router->post('save/{wiki_project_id}', 'DocumentsController@save')
             ->name('wiki.document.save')
             ->where('wiki_project_id', '[0-9]+');
         // 新建文件、文件夹
-        $router->post('edit/create/{wiki_project_id}', 'WikiDocumentsController@create')
+        $router->post('edit/create/{wiki_project_id}', 'DocumentsController@create')
             ->name('wiki.document.create')
             ->where('wiki_project_id', '[0-9]+');;
         // 文档排序
-        $router->post('sort/{wiki_project_id}', 'WikiDocumentsController@sort')
+        $router->post('sort/{wiki_project_id}', 'DocumentsController@sort')
             ->name('wiki.document.sort')
             ->where('wiki_project_id', '[0-9]+');
         // 文档重命名
-        $router->post('rename/{wiki_project_id}/{doc_id}', 'WikiDocumentsController@rename')
+        $router->post('rename/{wiki_project_id}/{doc_id}', 'DocumentsController@rename')
             ->name('wiki.document.rename')
             ->where('wiki_project_id', '[0-9]+')
             ->where('doc_id', '[0-9]+');
         // 文档删除
-        $router->post('delete/{wiki_project_id}', 'WikiDocumentsController@delete')
+        $router->post('delete/{wiki_project_id}', 'DocumentsController@delete')
             ->name('wiki.document.delete')
             ->where('wiki_project_id', '[0-9]+');
         // 图片附件上传
-        $router->post('upload/img', 'WikiAssetUploadController@uploadImg')
+        $router->post('upload/img', 'AssetUploadController@uploadImg')
             ->name('wiki.document.upload.img');
         // 文件附件上传
-        $router->post('upload/file', 'WikiAssetUploadController@uploadFile')
+        $router->post('upload/file', 'AssetUploadController@uploadFile')
             ->name('wiki.document.upload.file');
     });
 

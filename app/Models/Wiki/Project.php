@@ -1,13 +1,15 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Wiki;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class WikiProject extends Model
+class Project extends Model
 {
     use HasFactory;
+
+    protected $table = 'wiki_projects';
 
     const TYPE_PRIVATE = 0;
     const TYPE_PUBLIC = 1;

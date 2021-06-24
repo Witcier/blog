@@ -3,12 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\ErrorDesc;
-use App\Model\Event\Event;
-use App\Models\NavMenu;
-use App\Models\WikiDocument;
-use App\Models\WikiProject;
-use App\Util\StatisticUtil;
-use Dcat\Admin\Facades\Admin;
+use App\Models\Nav\Menu;
+use App\Models\Wiki\Project;
+use App\Models\Wiki\Document;
+use Dcat\Admin\Admin;
 
 /**
  * Wiki 相关控制器
@@ -22,22 +20,20 @@ class WikiController extends BaseController
      */
     public function index()
     {
-        StatisticUtil::recordVisitorEvent(Event::$SCENE_MAIN_PAGE, Event::$LOCATION_WIKI);
-
         $project = null;
 
         if (Admin::user() != null && Admin::user()->isAdministrator()) {
             // 登录账户显示所有文档，包含隐私文档
-            $project = WikiProject::orderBy('updated_at', 'DESC')->get();
+            $project = Project::orderBy('updated_at', 'DESC')->get();
         } else {
-            $project = WikiProject::where('type', '=', WikiProject::TYPE_PUBLIC)
+            $project = Project::where('type', '=', Project::TYPE_PUBLIC)
                 ->orderBy('updated_at', 'DESC')
                 ->get();
         }
 
         return view('wiki.index')
             ->with('projects', $project)
-            ->with('navMenu', NavMenu::getNavMenu());
+            ->with('navMenu', Menu::all()->sortBy('order'));
     }
 
     /**
@@ -51,14 +47,14 @@ class WikiController extends BaseController
         if (empty($docId) || $docId <= 0) {
             abort(404);
         }
-        $wikiProject = WikiProject::find($projectId);
-        if (empty($wikiProject)) {
+        $Project = Project::find($projectId);
+        if (empty($Project)) {
             abort(404);
         }
-        if ($wikiProject->type == WikiProject::TYPE_PRIVATE && (Admin::user() == null || !Admin::user()->isAdministrator())) {
+        if ($Project->type == Project::TYPE_PRIVATE && (Admin::user() == null || !Admin::user()->isAdministrator())) {
             abort(403);
         }
-        $document = WikiDocument::where('wiki_project_id', '=', $projectId)
+        $document = Document::where('wiki_project_id', '=', $projectId)
             ->where('id', '=', $docId)
             ->first();
         if (empty($document)) {
@@ -78,18 +74,18 @@ class WikiController extends BaseController
         if (empty($projectId) || $projectId <= 0) {
             abort(404);
         }
-        $project = WikiProject::where('id', '=', $projectId)
+        $project = Project::where('id', '=', $projectId)
             ->first();
         if (empty($project)) {
             abort(404);
         }
-        if ($project->type == WikiProject::TYPE_PRIVATE && (Admin::user() == null || !Admin::user()->isAdministrator())) {
+        if ($project->type == Project::TYPE_PRIVATE && (Admin::user() == null || !Admin::user()->isAdministrator())) {
             abort(403);
         }
-        $navMenu = HomeNavMenu::all()
+        $navMenu = Menu::all()
             ->sortBy('order');
 
-        $catalog = WikiDocument::getDocumentCatalog($project->id);
+        $catalog = Document::getDocumentCatalog($project->id);
 
         return view('wiki.detail.index')
             ->with('navMenu', $navMenu)

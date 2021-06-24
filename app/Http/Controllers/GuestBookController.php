@@ -2,9 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Model\Admin\HomeNavMenu;
-use App\Model\Event\Event;
-use App\Util\StatisticUtil;
+use App\Models\Nav\Menu;
 
 /**
  * 留言板
@@ -18,9 +16,7 @@ class GuestBookController extends BaseController
      */
     public function index()
     {
-        StatisticUtil::recordVisitorEvent(Event::$SCENE_MAIN_PAGE, Event::$LOCATION_GUEST_BOOK);
-
         return view('guestbook.index')
-            ->with('navMenu', HomeNavMenu::getNavMenu());
+            ->with('navMenu', Menu::all()->sortBy('order'));
     }
 }

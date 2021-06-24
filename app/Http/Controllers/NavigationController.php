@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Model\Admin\HomeNavMenu;
-use App\Model\Event\Event;
-use App\Model\Navigation\Category;
+use App\Models\Nav\Menu;
+use App\Models\Navigation\Category;
 use App\Util\StatisticUtil;
-
 /**
  * 网址收藏
  * Class NavigationController
@@ -16,8 +14,6 @@ class NavigationController extends Controller
 {
     public function index()
     {
-        StatisticUtil::recordVisitorEvent(Event::$SCENE_MAIN_PAGE, Event::$LOCATION_NAVIGATE);
-
         $categories = Category::with(
             ['children' => function ($query) {
                 $query->orderBy('order');
@@ -30,6 +26,6 @@ class NavigationController extends Controller
 
         return view('navigation.index')
             ->with('categories', $categories)
-            ->with('navMenu', HomeNavMenu::getNavMenu());
+            ->with('navMenu', Menu::all()->sortBy('order'));
     }
 }

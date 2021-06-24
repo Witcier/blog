@@ -26,6 +26,6 @@ class Category extends Model
      */
     public function sites()
     {
-        return $this->hasMany(Site::class);
+        return $this->hasMany(Site::class, 'navigation_category_id');
     }
 }
