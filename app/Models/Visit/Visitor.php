@@ -1,17 +1,16 @@
 <?php
 
-namespace App\Models\Event;
+namespace App\Models\Visit;
 
-use App\Enums\EventEnum;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class VisitorEvent extends Model
+class Visitor extends Model
 {
     use HasFactory;
 
-    protected $table = 'statistic_event';
+    protected $table = 'statistic_visitor';
 
     protected $fillable = [
         'name', 'scene', 'location', 'ip', 'content', 'date',

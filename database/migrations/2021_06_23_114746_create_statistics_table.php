@@ -13,7 +13,7 @@ class CreateStatisticsTable extends Migration
      */
     public function up()
     {
-        Schema::create('statistic_event', function (Blueprint $table) {
+        Schema::create('statistic_visitor', function (Blueprint $table) {
             $table->id();
             $table->string('name')->comment("统计时间名称");
             $table->string('scene')->comment("场景值");
@@ -42,7 +42,6 @@ class CreateStatisticsTable extends Migration
     public function down()
     {
         Schema::dropIfExists('statistic_event');
-        Schema::dropIfExists('statistic_uv');
-        Schema::dropIfExists('statistic_pv');
+        Schema::dropIfExists('statistic_visit');
     }
 }
