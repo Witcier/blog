@@ -13,7 +13,7 @@ class CreateAdminConfigsTable extends Migration
      */
     public function up()
     {
-        Schema::create('admin_configs', function (Blueprint $table) {
+        Schema::create('admin_config', function (Blueprint $table) {
             $table->id();
             $table->string('name')->unique()->comment('设置名称');
             $table->longText('value')->comment('设置的值');
@@ -29,6 +29,6 @@ class CreateAdminConfigsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('admin_configs');
+        Schema::dropIfExists('admin_config');
     }
 }

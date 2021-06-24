@@ -25,7 +25,7 @@ Route::group([
     $router->resource('nav', 'Config\NavMenusController');
 
     // 配置管理
-    $router->resource('config', 'Config\AdminConfigsController');
+    $router->resource('config', 'Config\AdminConfigController');
 
     // 媒体管理
     $router->get('media', 'Media\MediaController@index')->name('media-index');

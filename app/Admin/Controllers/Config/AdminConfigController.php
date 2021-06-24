@@ -2,14 +2,14 @@
 
 namespace App\Admin\Controllers\Config;
 
-use App\Models\AdminConfig;
+use App\Models\Admin\Config;
 use Dcat\Admin\Form;
 use Dcat\Admin\Grid;
-use Dcat\Admin\Show;
 use Dcat\Admin\Http\Controllers\AdminController;
 
-class AdminConfigsController extends AdminController
+class AdminConfigController extends AdminController
 {
+    protected $title = '配置管理';
     /**
      * Make a grid builder.
      *
@@ -17,16 +17,12 @@ class AdminConfigsController extends AdminController
      */
     protected function grid()
     {
-        return Grid::make(new AdminConfig(), function (Grid $grid) {
-            $grid->id('ID')->sortable();
+        return Grid::make(new Config(), function (Grid $grid) {
             $grid->name()->display(function ($name) {
                 return "<a tabindex=\"0\" class=\"btn btn-xs btn-twitter\" role=\"button\" data-toggle=\"popover\" data-html=true title=\"Usage\" data-content=\"<code>config('$name');</code>\">$name</a>";
             });
-            $grid->value();
+            $grid->value()->width('1200px');
             $grid->column('description');
-    
-            $grid->created_at()->date('Y-m-d');
-            $grid->updated_at()->date('Y-m-d');
     
             $grid->filter(function ($filter) {
                 $filter->disableIdFilter();
@@ -52,7 +48,7 @@ class AdminConfigsController extends AdminController
      */
     protected function form()
     {
-        return Form::make(new AdminConfig(), function (Form $form) {
+        return Form::make(new Config(), function (Form $form) {
             $form->display('id', 'ID');
             $form->text('name')->rules('required');
             $form->textarea('value')->rules('required');
