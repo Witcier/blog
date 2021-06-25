@@ -14,4 +14,11 @@ class Config extends Model
     protected $fillable = [
         'name', 'value', 'description',
     ];
+
+    public static function loadAllConfig()
+    {
+        foreach (static::all(['name', 'value']) as $config) {
+            config([$config['name'] => $config['value']]);
+        }
+    }
 }

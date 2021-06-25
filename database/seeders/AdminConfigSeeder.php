@@ -80,36 +80,36 @@ class AdminConfigSeeder extends Seeder
                     'name' => 'about_site',
                     'updated_at' => '2020-10-20 09:12:19',
                     'value' => '##### 启程
-    
-    上班时闲逛 Laravel 社区发现了一个很牛的个人博客项目[techflowing-Blog](https://github.com/techflowing/Blog)，就把项目 clone 了，然后部署成功、运行，发现自己的个人博客网站瞬间弱爆了。然后便想着要不然把自己原来的博客网站给干掉吧，然后基于[techflowing-Blog](https://github.com/techflowing/Blog)重新开发一个适合自己的个人博客网站。
-    
-    
-    ##### 改造
-    
-    * 升级 [Laravel](https://learnku.com/docs/laravel/8.x) 框架为 8.*
-    * 将 [Laravel-admin](https://laravel-admin.org/) 改成 [Dcat Admin](https://learnku.com/docs/dcat-admin/2.x)
-    * 本地线上将采用统一环境使用 [Laravel Sail](https://learnku.com/docs/laravel/8.x/sail/9789)
-    * 打造一个适合自己的博客主题（这个放在最后是因为自己前端知识比较薄弱）
-    
-    
-    ##### 已知问题
-    
-    1. 浏览器适配（当前仅适配 Chrome）
-    2. bower install 被执行时会出现个别扩展无法正常安装，建议手动一个个安装
-    
-    ##### 致谢
-    
-    * [Laravel](https://learnku.com/laravel)
-    * [WebStack-Laravel](https://github.com/hui-ho/WebStack-Laravel "WebStack-Laravel")
-    * [Laravel-admin](https://laravel-admin.org/ "Laravel-admin")
-    * [Editor.md](http://editor.md.ipandao.com/ "Editor.md")
-    * [Layer ](https://layer.layui.com/ "Layer ")
-    * [zTree](http://www.treejs.cn/v3/main.php#_zTreeInfo "zTree")
-    * [SmartWiki](https://github.com/lifei6671/SmartWiki "SmartWiki")
-    * [Valine](https://valine.js.org/)
-    * [KityMinder](https://github.com/fex-team/kityminder)
-    * [Laravel Sail](https://learnku.com/docs/laravel/8.x/sail/9789)
-    * [Dcat Admin](https://learnku.com/docs/dcat-admin/2.x)',
+
+上班时闲逛 Laravel 社区发现了一个很牛的个人博客项目[techflowing-Blog](https://github.com/techflowing/Blog)，就把项目 clone 了，然后部署成功、运行，发现自己的个人博客网站瞬间弱爆了。然后便想着要不然把自己原来的博客网站给干掉吧，然后基于[techflowing-Blog](https://github.com/techflowing/Blog)重新开发一个适合自己的个人博客网站。
+
+
+##### 改造
+
+* 升级 [Laravel](https://learnku.com/docs/laravel/8.x) 框架为 8.*
+* 将 [Laravel-admin](https://laravel-admin.org/) 改成 [Dcat Admin](https://learnku.com/docs/dcat-admin/2.x)
+* 本地线上将采用统一环境使用 [Laravel Sail](https://learnku.com/docs/laravel/8.x/sail/9789)
+* 打造一个适合自己的博客主题（这个放在最后是因为自己前端知识比较薄弱）
+
+
+##### 已知问题
+
+1. 浏览器适配（当前仅适配 Chrome）
+2. bower install 被执行时会出现个别扩展无法正常安装，建议手动一个个安装
+
+##### 致谢
+
+* [Laravel](https://learnku.com/laravel)
+* [WebStack-Laravel](https://github.com/hui-ho/WebStack-Laravel "WebStack-Laravel")
+* [Laravel-admin](https://laravel-admin.org/ "Laravel-admin")
+* [Editor.md](http://editor.md.ipandao.com/ "Editor.md")
+* [Layer ](https://layer.layui.com/ "Layer ")
+* [zTree](http://www.treejs.cn/v3/main.php#_zTreeInfo "zTree")
+* [SmartWiki](https://github.com/lifei6671/SmartWiki "SmartWiki")
+* [Valine](https://valine.js.org/)
+* [KityMinder](https://github.com/fex-team/kityminder)
+* [Laravel Sail](https://learnku.com/docs/laravel/8.x/sail/9789)
+* [Dcat Admin](https://learnku.com/docs/dcat-admin/2.x)',
                 ],
                 [
                     'created_at' => '2020-06-25 14:29:05',
