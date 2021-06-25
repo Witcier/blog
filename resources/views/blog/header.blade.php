@@ -6,6 +6,6 @@
     <script src="{{ asset('static-third/paginator/bootstrap-paginator.min.js') }}"></script>
 
     <script type="text/javascript">
-        window.pageCount = '{{$pageCount}}';
+        window.pageCount = '{{ $pageCount }}';
     </script>
 @endsection

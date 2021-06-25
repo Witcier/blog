@@ -22,4 +22,9 @@ class Menu extends Model
     protected $fillable = [
         'name', 'path', 'order', 'target',
     ];
+
+    public static function getMenu()
+    {
+        return static::all()->sortBy('order');
+    }
 }

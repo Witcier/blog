@@ -46,4 +46,9 @@ class Project extends Model
         }
         return $jsonArray;
     }
+
+    public function documents()
+    {
+        return $this->hasMany(Document::class, 'wiki_project_id');
+    }
 }

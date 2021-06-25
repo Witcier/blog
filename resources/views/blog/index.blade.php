@@ -23,10 +23,10 @@
                             @foreach($blogArticle as $article)
                                 <tr>
                                     <th class='col-sm-8'>
-                                        <a class='blog-article-name' href='{{url($article->link)}}'
-                                           target='_blank'>{{empty($article->p_title)? $article->title : $article->p_title." ➞ ".$article->title}}</a>
+                                        <a class='blog-article-name' href='{{ route('blog.article.detail',['doc_id' => $article->id, 'title' => $article->name]) }}'
+                                           target='_blank'>{{empty($article->parent->name)? $article->name : $article->parent->name." ➞ ".$article->name}}</a>
                                     </th>
-                                    <th class='col-sm-2'>{{$article->category}}</th>
+                                    <th class='col-sm-2'>{{$article->project->name}}</th>
                                     <th class='col-sm-2'>{{$article->date}}</th>
                                 </tr>
                             @endforeach
@@ -50,7 +50,7 @@
                         <p class="user-profile-name">{{$username}}</p>
                         <p class="user-profile-slogin">{{$userSlogin}}</p>
                         <div class="user-profile-statistics">
-                            <p class="user-profile-statistics-item">{{$blogCount}}<br>文章</p>
+                            <p class="user-profile-statistics-item">{{$blogArticle->count()}}<br>文章</p>
                             <p class="user-profile-statistics-item">{{$categoryCount}}<br>分类</p>
                         </div>
                     </div>
@@ -60,7 +60,7 @@
                             @foreach($category as $item)
                                 <a class="category-item" href="{{route('wiki.document.detail',['project_id'=>$item->id])}}">
                                     <p class="category-item-name">{{$item->name}}</p>
-                                    <p class="category-item-count">{{$item->count}}</p>
+                                    <p class="category-item-count">{{$item->documents->count()}}</p>
                                 </a>
                             @endforeach
                         </div>

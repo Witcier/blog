@@ -2,6 +2,7 @@
 
 namespace App\Models\Wiki;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -43,5 +44,41 @@ class Document extends Model
             }
         }
         return $catalog;
+    }
+
+    public static function getDocumentOrCategory($type)
+    {
+        return static::query()
+            ->where('type', $type)
+            ->whereHas('project', function ($query) {
+                $query->where('type', Project::TYPE_PUBLIC);
+            });
+    }
+
+    public function getDateAttribute()
+    {
+        return $this->updated_at->format('Y-m-d');
+    }
+
+    public function getCountAttribute()
+    {
+        return static::where('type', static::TYPE_FILE)
+            ->where('parent_id', $this->id)
+            ->count();
+    }
+
+    public function project()
+    {
+        return $this->belongsTo(Project::class, 'wiki_project_id');
+    }
+
+    public function parent()
+    {
+        return $this->belongsTo(Document::class, 'parent_id');
+    }
+
+    public function children()
+    {
+        return $this->hasMany(Document::class, 'parent_id');
     }
 }
