@@ -4,11 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\ErrorDesc;
 use App\Model\Admin\HomeNavMenu;
-use App\Model\Event\Event;
 use App\Model\XMind\Category;
 use App\Model\XMind\XMind;
-use App\Util\StatisticUtil;
-use Dcat\Admin\Facades\Admin;
+use Dcat\Admin\Admin;
 
 /**
  * 思维导图相关控制器
@@ -24,8 +22,6 @@ class XMindController extends BaseController
      */
     public function index()
     {
-        StatisticUtil::recordVisitorEvent(Event::$SCENE_MAIN_PAGE, Event::$LOCATION_XMIND);
-
         $project = null;
 
         if (Admin::user() != null && Admin::user()->isAdministrator()) {

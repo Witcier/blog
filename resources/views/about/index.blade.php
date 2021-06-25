@@ -59,7 +59,7 @@
                                     @continue
                                 @endif
                                 <div class="access-statistic-item">
-                                    <p class="access-statistic-item-name">{{$item->location}}</p>
+                                    <p class="access-statistic-item-name">{{App\Models\Visit\Visit::$locationMap[$item->location]}}</p>
                                     <div class="access-statistic-item-pv">
                                         <p class="access-statistic-name">访问总次数</p>
                                         <p class="access-statistic-pv">{{$item->pv}}</p>

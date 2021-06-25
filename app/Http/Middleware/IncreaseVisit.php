@@ -3,9 +3,10 @@
 namespace App\Http\Middleware;
 
 use App\Jobs\IncreaseStaticVisit;
-use App\Models\Visit\Visitor;
+use App\Models\Visit\Visit;
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Route;
 
 class IncreaseVisit
@@ -21,7 +22,7 @@ class IncreaseVisit
     {
         $location = explode('.', Route::currentRouteName())[0];
 
-        if (in_array($location, Visitor::Scence_Array)) {
+        if (Arr::exists(Visit::$locationMap, $location)) {
             dispatch(new IncreaseStaticVisit($location, $request->ip()));
         }
 
