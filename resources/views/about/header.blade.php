@@ -8,8 +8,8 @@
     <script src="{{ asset('static-third/editormd/lib/prettify.min.js') }}"></script>
 
     <script type="text/javascript">
-        window.aboutMe = @json($aboutMe);
-        window.aboutSite = @json($aboutSite)
+        window.aboutMe = @json(config('about_me', ""));
+        window.aboutSite = @json(config('about_site', ""))
     </script>
 
 @endsection

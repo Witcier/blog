@@ -28,45 +28,37 @@
 
                 <div class="col-sm-3 col-lg-3">
                     <div class="user-profile ">
-                        @php
-                            $weChat = config('user_wechat','/static-common/img/logo.png');
-                            $gitHub = config('user_github','');
-                            $email = config('user_email','');
-                            if (!empty($email)){
-                                $email = "mailto:".$email;
-                            }
-                        @endphp
-                        <img class="about-wechat-img" src="{{$weChat}}">
+                        <img class="about-wechat-img" src="{{ config('user_wechat','/static-common/img/logo.png') }}">
                         <p class="about-contact-me-text">微信扫码联系我</p>
                         <div class="about-contact-me-more">
                             <div class="about-contact-me-more-item">
-                                <a href="{{$gitHub}}" target="_blank" title="GitHub">
+                                <a href="{{ config('user_github','') }}" target="_blank" title="GitHub">
                                     <img class="about-contact-me-more-item-icon" src="{{asset('/static-common/img/github.png')}}">
                                 </a>
                             </div>
                             <div class="about-contact-me-more-item">
-                                <a href="{{$email}}" title="Email">
+                                <a href="{{ "mailto:".config('user_email','') }}" title="Email">
                                     <img class="about-contact-me-more-item-icon" src="{{asset('/static-common/img/email.png')}}">
                                 </a>
                             </div>
                         </div>
                     </div>
-                    @isset($accessData)
+                    @isset($visits)
                         <div class="access-statistic-detail">
                             <p class="about-item-title access-statistic-detail-title">访问统计</p>
-                            @foreach($accessData as $item)
-                                @if(empty($item))
+                            @foreach($visits as $visit)
+                                @if(empty($visit))
                                     @continue
                                 @endif
                                 <div class="access-statistic-item">
-                                    <p class="access-statistic-item-name">{{App\Models\Visit\Visit::$locationMap[$item->location]}}</p>
+                                    <p class="access-statistic-item-name">{{ App\Models\Visit\Visit::$locationMap[$visit->location] }}</p>
                                     <div class="access-statistic-item-pv">
                                         <p class="access-statistic-name">访问总次数</p>
-                                        <p class="access-statistic-pv">{{$item->pv}}</p>
+                                        <p class="access-statistic-pv">{{ $visit->pv }}</p>
                                     </div>
                                     <div class="access-statistic-item-uv">
                                         <p class="access-statistic-name">访问总人数</p>
-                                        <p class="access-statistic-uv">{{$item->uv}}</p>
+                                        <p class="access-statistic-uv">{{ $visit->uv }}</p>
                                     </div>
                                 </div>
                             @endforeach

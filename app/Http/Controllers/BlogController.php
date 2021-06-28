@@ -16,21 +16,12 @@ use Illuminate\Http\Request;
 class BlogController extends BaseController
 {
     /**
-     * @var int 分页，每页的数量
-     */
-    private const PAGE_SIZE = 20;
-
-    /**
      * 首页
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function index($page = 1)
+    public function index()
     {
-        $documents = Document::getDocumentOrCategory(Document::TYPE_FILE)
-            ->orderBy('updated_at', "DESC")
-            ->offset(($page - 1) * self::PAGE_SIZE)
-            ->limit(self::PAGE_SIZE)
-            ->get();
+        $documents = Document::getDocumentByPage();
 
         if (empty($documents)) {
             abort(404);
@@ -48,7 +39,7 @@ class BlogController extends BaseController
         $documentCount = Document::countDocument();
 
         // 计算分页数量
-        $pageCount = ceil($documentCount / self::PAGE_SIZE);
+        $pageCount = ceil($documentCount / Document::PAGE_SIZE);
 
         return view('blog.index')
             ->with('navMenu', Menu::getMenu())
@@ -66,11 +57,7 @@ class BlogController extends BaseController
      */
     public function getPageList($page)
     {
-        $documents = Document::getDocumentOrCategory(Document::TYPE_FILE)
-            ->orderBy('updated_at', "DESC")
-            ->offset(($page - 1) * self::PAGE_SIZE)
-            ->limit(self::PAGE_SIZE)
-            ->get();
+        $documents = Document::getDocumentByPage($page);
 
         if (empty($documents)) {
             abort(404);

@@ -14,9 +14,7 @@ class AboutController extends BaseController
     public function index()
     {
         return view('about.index')
-            ->with('navMenu', Menu::all()->sortBy('order'))
-            ->with('aboutMe', config('about_me', ""))
-            ->with('aboutSite', config('about_site', ""))
-            ->with('accessData', Visit::all());
+            ->with('navMenu', Menu::getMenu())
+            ->with('visits', Visit::all());
     }
 }

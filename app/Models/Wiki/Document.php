@@ -18,6 +18,7 @@ class Document extends Model
 
     const TYPE_FILE = 0;
     const TYPE_DIR = 1;
+    const PAGE_SIZE = 20;
 
     /**
      * 获取项目的文档目录结构
@@ -50,13 +51,17 @@ class Document extends Model
         return $catalog;
     }
 
-    public static function getDocumentOrCategory($type)
+    public static function getDocumentByPage($page = 1)
     {
         return static::query()
-            ->where('type', $type)
+            ->where('type', self::TYPE_FILE)
             ->whereHas('project', function ($query) {
                 $query->where('type', Project::TYPE_PUBLIC);
-            });
+            })
+            ->orderBy('updated_at', "DESC")
+            ->offset(($page - 1) * self::PAGE_SIZE)
+            ->limit(self::PAGE_SIZE)
+            ->get();
     }
 
     public static function countDocument()
