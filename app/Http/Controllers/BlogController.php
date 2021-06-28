@@ -42,7 +42,6 @@ class BlogController extends BaseController
         $pageCount = ceil($documentCount / Document::PAGE_SIZE);
 
         return view('blog.index')
-            ->with('navMenu', Menu::getMenu())
             ->with('blogArticle', $documents)
             ->with('blogCount', $documentCount)
             ->with('categoryCount', sizeof($project))

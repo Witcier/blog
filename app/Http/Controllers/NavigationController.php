@@ -25,7 +25,6 @@ class NavigationController extends Controller
             ->get();
 
         return view('navigation.index')
-            ->with('categories', $categories)
-            ->with('navMenu', Menu::all()->sortBy('order'));
+            ->with('categories', $categories);
     }
 }

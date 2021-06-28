@@ -32,8 +32,7 @@ class WikiController extends BaseController
         }
 
         return view('wiki.index')
-            ->with('projects', $project)
-            ->with('navMenu', Menu::all()->sortBy('order'));
+            ->with('projects', $project);
     }
 
     /**

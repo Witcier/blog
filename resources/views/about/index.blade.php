@@ -33,12 +33,12 @@
                         <div class="about-contact-me-more">
                             <div class="about-contact-me-more-item">
                                 <a href="{{ config('user_github','') }}" target="_blank" title="GitHub">
-                                    <img class="about-contact-me-more-item-icon" src="{{asset('/static-common/img/github.png')}}">
+                                    <img class="about-contact-me-more-item-icon" src="{{ asset('/static-common/img/github.png') }}">
                                 </a>
                             </div>
                             <div class="about-contact-me-more-item">
                                 <a href="{{ "mailto:".config('user_email','') }}" title="Email">
-                                    <img class="about-contact-me-more-item-icon" src="{{asset('/static-common/img/email.png')}}">
+                                    <img class="about-contact-me-more-item-icon" src="{{ asset('/static-common/img/email.png') }}">
                                 </a>
                             </div>
                         </div>

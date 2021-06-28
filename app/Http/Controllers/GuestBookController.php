@@ -16,7 +16,6 @@ class GuestBookController extends BaseController
      */
     public function index()
     {
-        return view('guestbook.index')
-            ->with('navMenu', Menu::all()->sortBy('order'));
+        return view('guestbook.index');
     }
 }

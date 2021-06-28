@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Http\ErrorDesc;
-use App\Model\Admin\HomeNavMenu;
 use App\Model\XMind\Category;
 use App\Model\XMind\XMind;
 use Dcat\Admin\Admin;
@@ -58,8 +57,7 @@ class XMindController extends BaseController
 
         return view('xmind.index')
             ->with('projects', $project)
-            ->with('current', $current)
-            ->with('navMenu', HomeNavMenu::getNavMenu());
+            ->with('current', $current);
     }
 
     /**

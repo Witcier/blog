@@ -21,10 +21,10 @@
                 <p class="user-profile-slogin">{{$userSlogin}}</p>
             </div>
 
-            @isset($menus)
+            @isset($navMenu)
                 <div class="welcome-nav-menu-container">
-                    @foreach($menus as $menu)
-                        <a class="welcome-nav-menu" href="{{url("/".$menu->path)}}">{{$menu->name}}</a>
+                    @foreach($navMenu as $menu)
+                        <a class="welcome-nav-menu" href="{{ url("/".$menu->path) }}">{{ $menu->name }}</a>
                     @endforeach
                 </div>
             @endisset
