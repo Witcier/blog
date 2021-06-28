@@ -18,10 +18,10 @@
             @if(count($navMenu) != 0)
                 <ul class="navbar-nav">
                     @foreach($navMenu as $menu)
-                        <li class="{{substr($curPath, 0, strlen($menu->path)) === $menu->path ? 'active' : ''}}">
-                            <a target="{{$menu->target == \App\Models\Nav\Menu::TYPE_TARGET_BLANK ? '_black' : '_self'}}"
-                               href="/{{$menu->path}}">
-                                <span class="title">{{$menu->name}}</span>
+                        <li class="{{ substr($curPath, 0, strlen($menu->path)) === $menu->path ? 'active' : ''}}">
+                            <a target="{{ $menu->target == \App\Models\Nav\Menu::TYPE_TARGET_BLANK ? '_black' : '_self' }}"
+                               href="/{{ $menu->path }}">
+                                <span class="title">{{ $menu->name }}</span>
                             </a>
                         </li>
                     @endforeach

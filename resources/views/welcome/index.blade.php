@@ -15,10 +15,7 @@
             </div>
 
             <div class="welcome-profile-container">
-                @php
-                    $userSlogin = config('user_slogin','Coding For Fun，代码改变世界');
-                @endphp
-                <p class="user-profile-slogin">{{$userSlogin}}</p>
+                <p class="user-profile-slogin">{{ config('user_slogin','Coding For Fun，代码改变世界') }}</p>
             </div>
 
             @isset($navMenu)

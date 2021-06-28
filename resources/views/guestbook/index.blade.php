@@ -23,11 +23,11 @@
     <script>
         new Valine({
             el: '#vcomments',
-            appId: '{{config('valine_app_id','Qbo9OXrWmbsahg21m7A4VKIx-gzGzoHsz')}}',
-            appKey: '{{config('valine_app_key','DMbLvtMz659xtt1skJwTK6UG')}}',
-            placeholder: '{{config('valine_placeholder',"道友请举手发言")}}',
-            avatar: '{{config('valine_avatar','wavatar')}}',
-            pageSize: '{{config('valine_page_size',20)}}',
+            appId: '{{ config('valine_app_id','Qbo9OXrWmbsahg21m7A4VKIx-gzGzoHsz') }}',
+            appKey: '{{ config('valine_app_key','DMbLvtMz659xtt1skJwTK6UG') }}',
+            placeholder: '{{ config('valine_placeholder',"道友请举手发言") }}',
+            avatar: '{{ config('valine_avatar','wavatar') }}',
+            pageSize: '{{ config('valine_page_size',20) }}',
         })
     </script>
 

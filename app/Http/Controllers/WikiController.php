@@ -41,24 +41,16 @@ class WikiController extends BaseController
      * @param integer $docId 文档ID
      * @return \Illuminate\Http\Response
      */
-    public function getContent($projectId, $docId)
+    public function getContent(Project $project, Document $document)
     {
-        if (empty($docId) || $docId <= 0) {
+        if (empty($project) || empty($document)) {
             abort(404);
         }
-        $Project = Project::find($projectId);
-        if (empty($Project)) {
-            abort(404);
-        }
-        if ($Project->type == Project::TYPE_PRIVATE && (Admin::user() == null || !Admin::user()->isAdministrator())) {
+
+        if ($project->type == Project::TYPE_PRIVATE && (Admin::user() == null || !Admin::user()->isAdministrator())) {
             abort(403);
         }
-        $document = Document::where('wiki_project_id', '=', $projectId)
-            ->where('id', '=', $docId)
-            ->first();
-        if (empty($document)) {
-            abort(404);
-        }
+
         $data['content'] = $document->content != null ? $document->content : "";
         return $this->buildResponse(ErrorDesc::SUCCESS, $data);
     }
@@ -68,26 +60,19 @@ class WikiController extends BaseController
      * @param integer $projectId 项目ID
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function detail($projectId)
+    public function detail(Project $project)
     {
-        if (empty($projectId) || $projectId <= 0) {
-            abort(404);
-        }
-        $project = Project::where('id', '=', $projectId)
-            ->first();
         if (empty($project)) {
             abort(404);
         }
+
         if ($project->type == Project::TYPE_PRIVATE && (Admin::user() == null || !Admin::user()->isAdministrator())) {
             abort(403);
         }
-        $navMenu = Menu::all()
-            ->sortBy('order');
 
         $catalog = Document::getDocumentCatalog($project->id);
 
         return view('wiki.detail.index')
-            ->with('navMenu', $navMenu)
             ->with('wiki_project', $project)
             ->with('doc_catalog', json_encode($catalog, JSON_UNESCAPED_UNICODE))
             ->with('wiki_project_id', $project->id);

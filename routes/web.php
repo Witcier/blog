@@ -22,14 +22,14 @@ Route::group(['prefix' => 'wiki'], function () {
     // Wiki 首页
     Route::get('/', 'WikiController@index')->name('wiki');
     // 获取指定文档内容
-    Route::get('content/{project_id}/{doc_id}', 'WikiController@getContent')
+    Route::get('content/{project}/{document}', 'WikiController@getContent')
         ->name('wiki.document.content')
-        ->where('project_id', '[0-9]+')
-        ->where('doc_id', '[0-9]+');
+        ->where('project', '[0-9]+')
+        ->where('document', '[0-9]+');
     // 文档列表展示
-    Route::get('detail/{project_id}', 'WikiController@detail')
+    Route::get('detail/{project}', 'WikiController@detail')
         ->name('wiki.document.detail')
-        ->where('project_id', '[0-9]+');
+        ->where('project', '[0-9]+');
 });
 
 // 博客配置

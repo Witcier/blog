@@ -28,7 +28,7 @@ class BlogController extends BaseController
         }
 
         // 获取项目详情
-        $project = Project::query()
+        $projects = Project::query()
             ->where('type', Project::TYPE_PUBLIC)
             ->whereHas('documents', function ($query) {
                 $query->where('type', Document::TYPE_FILE);
@@ -42,11 +42,10 @@ class BlogController extends BaseController
         $pageCount = ceil($documentCount / Document::PAGE_SIZE);
 
         return view('blog.index')
-            ->with('blogArticle', $documents)
-            ->with('blogCount', $documentCount)
-            ->with('categoryCount', sizeof($project))
+            ->with('documents', $documents)
+            ->with('documentCount', $documentCount)
             ->with('pageCount', $pageCount)
-            ->with('category', $project);
+            ->with('projects', $projects);
     }
 
     /**

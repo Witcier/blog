@@ -8,7 +8,7 @@
     <div class="page-container">
         <div class="col-sm-10 col-lg-10 col-sm-offset-1 blog-detail-container">
             <div class="col-sm-9 editormd-view-body blog-detail-content">
-                <p class="doc-detail-title" id="doc-title">{{$article->name}}</p>
+                <p class="doc-detail-title" id="doc-title">{{ $article->name }}</p>
                 <div class="markdown-body editormd-preview-theme-dark" id="editormd-html-view">
                     <textarea style="display:none;" name="test-editormd-markdown-doc">###Hello world!</textarea>
                 </div>
