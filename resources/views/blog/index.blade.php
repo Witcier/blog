@@ -53,7 +53,7 @@
                         <div class="category-detail">
                             <p class="category-title">文章分类</p>
                             @foreach($projects as $project)
-                                <a class="category-item" href="{{ route('wiki.document.detail',['project_id'=>$project->id]) }}">
+                                <a class="category-item" href="{{ route('wiki.document.detail',['project'=>$project->id]) }}">
                                     <p class="category-item-name">{{ $project->name }}</p>
                                     <p class="category-item-count">{{ $project->documents()->where('type', \App\Models\Wiki\Document::TYPE_FILE)->count() }}</p>
                                 </a>
