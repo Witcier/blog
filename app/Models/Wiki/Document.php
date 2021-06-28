@@ -12,6 +12,10 @@ class Document extends Model
 
     protected $table = 'wiki_documents';
 
+    protected $appends = [
+        'date', 'category_name', 'title', 'link'
+    ];
+
     const TYPE_FILE = 0;
     const TYPE_DIR = 1;
 
@@ -55,9 +59,30 @@ class Document extends Model
             });
     }
 
+    public static function countDocument()
+    {
+        return static::where('type', self::TYPE_FILE)
+            ->count();
+    }
+
     public function getDateAttribute()
     {
         return $this->updated_at->format('Y-m-d');
+    }
+
+    public function getCategoryNameAttribute()
+    {
+        return $this->project->name;
+    }
+
+    public function getTitleAttribute()
+    {
+        return $this->parent ? $this->parent->name . " ➞ " . $this->name : $this->name;
+    }
+
+    public function getLinkAttribute()
+    {
+        return route('blog.article.detail',['document' => $this->id]);
     }
 
     public function getCountAttribute()

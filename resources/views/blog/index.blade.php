@@ -23,11 +23,11 @@
                             @foreach($blogArticle as $article)
                                 <tr>
                                     <th class='col-sm-8'>
-                                        <a class='blog-article-name' href='{{ route('blog.article.detail',['doc_id' => $article->id, 'title' => $article->name]) }}'
-                                           target='_blank'>{{empty($article->parent->name)? $article->name : $article->parent->name." ➞ ".$article->name}}</a>
+                                        <a class='blog-article-name' href='{{ route('blog.article.detail',['document' => $article->id]) }}'
+                                           >{{ empty($article->parent->name)? $article->name : $article->parent->name." ➞ ".$article->name }}</a>
                                     </th>
-                                    <th class='col-sm-2'>{{$article->project->name}}</th>
-                                    <th class='col-sm-2'>{{$article->date}}</th>
+                                    <th class='col-sm-2'>{{ $article->project->name }}</th>
+                                    <th class='col-sm-2'>{{ $article->date }}</th>
                                 </tr>
                             @endforeach
                         @endisset
@@ -41,26 +41,21 @@
                 </div>
                 <div class="col-sm-3 col-lg-3 blog-right-container">
                     <div class="user-profile">
-                        @php
-                            $userAvatar = config('user_avatar','/static-common/img/logo.png');
-                            $userSlogin = config('user_slogin','Coding For Fun，代码改变世界');
-                            $username = config('username','Laravel');
-                        @endphp
-                        <img class="user-profile-avatar" src="{{$userAvatar}}">
-                        <p class="user-profile-name">{{$username}}</p>
-                        <p class="user-profile-slogin">{{$userSlogin}}</p>
+                        <img class="user-profile-avatar" src="{{ config('user_avatar','/static-common/img/logo.png') }}">
+                        <p class="user-profile-name">{{ config('username','Witcier') }}</p>
+                        <p class="user-profile-slogin">{{ config('user_slogin','Coding For Fun，代码改变世界') }}</p>
                         <div class="user-profile-statistics">
-                            <p class="user-profile-statistics-item">{{$blogArticle->count()}}<br>文章</p>
-                            <p class="user-profile-statistics-item">{{$categoryCount}}<br>分类</p>
+                            <p class="user-profile-statistics-item">{{ $blogCount }}<br>文章</p>
+                            <p class="user-profile-statistics-item">{{ $categoryCount }}<br>分类</p>
                         </div>
                     </div>
                     @isset($category)
                         <div class="category-detail">
                             <p class="category-title">文章分类</p>
                             @foreach($category as $item)
-                                <a class="category-item" href="{{route('wiki.document.detail',['project_id'=>$item->id])}}">
-                                    <p class="category-item-name">{{$item->name}}</p>
-                                    <p class="category-item-count">{{$item->documents->count()}}</p>
+                                <a class="category-item" href="{{ route('wiki.document.detail',['project_id'=>$item->id]) }}">
+                                    <p class="category-item-name">{{ $item->name }}</p>
+                                    <p class="category-item-count">{{ $item->documents()->where('type', \App\Models\Wiki\Document::TYPE_FILE)->count() }}</p>
                                 </a>
                             @endforeach
                         </div>

@@ -2,7 +2,7 @@
  * 获取文章列表
  * @param page 页码
  */
-function getBlogList(page) {
+ function getBlogList(page) {
     let loading = layer.load(1, {
         shade: [0.1, '#fff'] // 0.1透明度的白色背景
     });
@@ -30,11 +30,11 @@ function getBlogListSuccess(data) {
     $('#blog-article-list-body').empty();
     // 添加子元素
     for (let item of data) {
-        let title = (item.parent_name == null || item.p_title === "") ? item.name : item.p_title + " ➞ " + item.title;
+        let title = (item.title == null || item.title === "") ? item.name : item.title;
         let dom = "<tr>\n" +
             "<th class='col-sm-8'><a class='blog-article-name' target='_blank' href='" + item.link + "'>" + title + "</a></th>\n" +
-            "<th class='col-sm-2'>" + item.name + "</th>\n" +
-            "<th class='col-sm-2'>" + item.name + "</th>\n" +
+            "<th class='col-sm-2'>" + item.category_name + "</th>\n" +
+            "<th class='col-sm-2'>" + item.date + "</th>\n" +
             "</tr>";
         $('#blog-article-list-body').append(dom);
     }

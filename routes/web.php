@@ -40,9 +40,9 @@ Route::group(['prefix' => 'blog'], function () {
         ->name('blog.page.list')
         ->where('page', '[0-9]+');
     // 博客详情页面
-    Route::get("/detail/{doc_id}/{title}", 'BlogController@getArticleDetail')
+    Route::get("/detail/{document}", 'BlogController@getArticleDetail')
         ->name('blog.article.detail')
-        ->where('doc_id', '[0-9]+');
+        ->where('document', '[0-9]+');
 });
 
 // 思维导图
