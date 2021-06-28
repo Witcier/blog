@@ -79,4 +79,6 @@ Route::group([
             ->name('wiki.document.upload.file');
     });
 
+    $router->resource('xmind/categories', 'Xmind\CategoriesController');
+
 });
