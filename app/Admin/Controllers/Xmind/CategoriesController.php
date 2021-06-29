@@ -4,13 +4,14 @@ namespace App\Admin\Controllers\Xmind;
 
 use App\Models\Xmind\Category;
 use Dcat\Admin\Form;
-use Dcat\Admin\Show;
 use Dcat\Admin\Tree;
 use Dcat\Admin\Layout\Content;
 use Dcat\Admin\Http\Controllers\AdminController;
 
 class CategoriesController extends AdminController
 {
+    protected $title = '思维导图分类';
+
     /**
      * 展示所有分类
      * @param Content $content
@@ -19,7 +20,7 @@ class CategoriesController extends AdminController
     public function index(Content $content)
     {
 
-        return $content->header('分类管理')
+        return $content->header('思维导图分类管理')
             ->description(trans('admin.list'))
             ->body($this->treeView());
     }
@@ -32,41 +33,30 @@ class CategoriesController extends AdminController
     }
 
     /**
-     * Make a show builder.
-     *
-     * @param mixed $id
-     *
-     * @return Show
-     */
-    protected function detail($id)
-    {
-        return Show::make($id, new XmindCategory(), function (Show $show) {
-            $show->field('id');
-            $show->field('icon');
-            $show->field('order');
-            $show->field('parent_id');
-            $show->field('title');
-            $show->field('created_at');
-            $show->field('updated_at');
-        });
-    }
-
-    /**
      * Make a form builder.
      *
      * @return Form
      */
     protected function form()
     {
-        return Form::make(new XmindCategory(), function (Form $form) {
-            $form->display('id');
-            $form->text('icon');
-            $form->text('order');
-            $form->text('parent_id');
-            $form->text('title');
-        
-            $form->display('created_at');
-            $form->display('updated_at');
+        return Form::make(new Category(), function (Form $form) {
+            $form->text('title', '标题')
+                ->rules('required|max:50')
+                ->placeholder('不得超过50个字符');
+            $form->icon('icon', '图标')
+                ->default('fa-star-o')
+                ->rules('required|max:20');
+
+            $form->tools(function (Form\Tools $tools) {
+                $tools->disableDelete();
+                $tools->disableView();
+            });
+
+            $form->footer(function ($footer) {
+                $footer->disableViewCheck();
+                $footer->disableEditingCheck();
+                $footer->disableCreatingCheck();
+            });
         });
     }
 }

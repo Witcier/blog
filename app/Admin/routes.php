@@ -79,6 +79,7 @@ Route::group([
             ->name('wiki.document.upload.file');
     });
 
+    // 思维导图
     $router->resource('xmind/categories', 'Xmind\CategoriesController');
 
 });
