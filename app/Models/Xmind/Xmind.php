@@ -9,10 +9,15 @@ class Xmind extends Model
 {
     use HasFactory;
 
+    protected $table = 'xmind_map';
+    
     const TYPE_PRIVATE = 0;
     const TYPE_PUBLIC = 1;
 
-    protected $table = 'xmind_map';
+    public static $typeMap = [
+        self::TYPE_PRIVATE => '私密',
+        self::TYPE_PUBLIC => '公开',
+    ];
 
     public function category()
     {

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "bb85388ad3b77327801ace1c75440a5e",
+    "content-hash": "6e3ea52267d668b2a0c82a63833bad58",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -2883,6 +2883,47 @@
                 }
             ],
             "time": "2020-08-18T17:17:46+00:00"
+        },
+        {
+            "name": "sinri/xmind-writer",
+            "version": "0.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sinri/XMindWriter.git",
+                "reference": "481812305e2a342ccba7d50e11d8c9e883ef0016"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sinri/XMindWriter/zipball/481812305e2a342ccba7d50e11d8c9e883ef0016",
+                "reference": "481812305e2a342ccba7d50e11d8c9e883ef0016",
+                "shasum": ""
+            },
+            "require": {
+                "ext-xmlwriter": "*",
+                "ext-zip": "*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "sinri\\XMindWriter\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Sinri Edogawa",
+                    "email": "e.joshua.s.e@gmail.com"
+                }
+            ],
+            "description": "XMind File Writer",
+            "support": {
+                "issues": "https://github.com/sinri/XMindWriter/issues",
+                "source": "https://github.com/sinri/XMindWriter/tree/0.6"
+            },
+            "time": "2021-05-27T07:41:56+00:00"
         },
         {
             "name": "spatie/eloquent-sortable",

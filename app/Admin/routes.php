@@ -79,7 +79,25 @@ Route::group([
             ->name('wiki.document.upload.file');
     });
 
-    // 思维导图
+    // 思维导图管理
+    // 分类
     $router->resource('xmind/categories', 'Xmind\CategoriesController');
+    // 思维导图
+    $router->resource('xmind', 'Xmind\XmindController');
+
+    $router->group([
+        'prefix' => 'xmind',
+        'namespace' => 'Xmind'
+    ], function (Router $router) {
+        // 思维导图 编辑页面
+        $router->get('detail/{xmind}', 'XmindController@editXMind')
+            ->name('xmind.edit')
+            ->where('id', '[0-9]+');
+        $router->post('save/{id}', 'XmindController@save')
+            ->name('xmind.save')
+            ->where('id', '[0-9]+');
+        $router->post('xmind-export', 'ExportController@exportXMind')
+            ->name('xmind.export');
+    });
 
 });
