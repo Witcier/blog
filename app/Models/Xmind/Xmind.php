@@ -10,6 +10,10 @@ class Xmind extends Model
     use HasFactory;
 
     protected $table = 'xmind_map';
+
+    protected $fillable = [
+        'name', 'type', 'order', 'content',
+    ];
     
     const TYPE_PRIVATE = 0;
     const TYPE_PUBLIC = 1;

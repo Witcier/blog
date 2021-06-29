@@ -8,6 +8,7 @@ use App\Models\Xmind\Xmind;
 use Dcat\Admin\Form;
 use Dcat\Admin\Grid;
 use Dcat\Admin\Http\Controllers\AdminController;
+use Illuminate\Http\Request;
 
 class XmindController extends AdminController
 {
@@ -27,10 +28,10 @@ class XmindController extends AdminController
             $grid->column('category.title', '分类');
             $grid->type('类型')->display(function ($value) {
                 return Xmind::$typeMap[$value];
-             })->label([
-                 0 => 'danger',
-                 1 => 'success',
-             ]);
+            })->label([
+                0 => 'danger',
+                1 => 'success',
+            ]);
             $grid->order('顺序');
             $grid->created_at('创建时间')->date('Y-m-d');
             $grid->updated_at('修改时间')->date('Y-m-d');
@@ -107,29 +108,32 @@ class XmindController extends AdminController
      * @param $id
      * @return \Illuminate\Http\Response
      */
-    public function save($id)
+    public function save(Xmind $xmind, Request $request)
     {
-        if ($this->isPost()) {
-            $data = $this->request->getContent();
-            if (empty($data)) {
-                return $this->buildResponse(ErrorDesc::REQUEST_BODY_EMPTY);
-            }
-
-            if (empty(XMind::find($id))) {
-                return $this->buildResponse(ErrorDesc::MIND_PROJECT_NOT_EXIST);
-            }
-
-            $data = json_decode($data);
-            $content = $data->content;
-            $result = XMind::where('id', '=', $id)
-                ->update(['content' => $content]);
-
-            if ($result) {
-                return $this->buildResponse(ErrorDesc::SUCCESS);
-            } else {
-                return $this->buildResponse(ErrorDesc::DB_ERROR);
-            }
+        if (!$data = $request->getContent()) {
+            return $this->buildResponse(ErrorDesc::REQUEST_BODY_EMPTY);
         }
-        return $this->buildResponse(ErrorDesc::METHOD_NOT_ALLOWED);
+
+        $data = json_decode($data);
+
+        $result = $xmind->update([
+            'content' => $data->content,
+        ]);
+
+        if ($result) {
+            return $this->buildResponse(ErrorDesc::SUCCESS);
+        } else {
+            return $this->buildResponse(ErrorDesc::DB_ERROR);
+        }
+    }
+
+    protected function buildResponse($errorDesc, $data = null)
+    {
+        $content = ['errCode' => $errorDesc[0], 'msg' => $errorDesc[1]];
+        if (!empty($data)) {
+            $content['data'] = $data;
+        }
+
+        return response()->json($content);
     }
 }

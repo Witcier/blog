@@ -93,7 +93,7 @@ Route::group([
         $router->get('detail/{xmind}', 'XmindController@editXMind')
             ->name('xmind.edit')
             ->where('id', '[0-9]+');
-        $router->post('save/{id}', 'XmindController@save')
+        $router->post('save/{xmind}', 'XmindController@save')
             ->name('xmind.save')
             ->where('id', '[0-9]+');
         $router->post('xmind-export', 'ExportController@exportXMind')
