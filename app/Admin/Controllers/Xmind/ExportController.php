@@ -23,7 +23,7 @@ use sinri\XMindWriter\XMetaInfo\XMetaEntity;
  * Class XMindExportController
  * @package App\Http\Controllers\Admin\XMind
  */
-class XMindExportController extends BaseController
+class ExportController extends BaseController
 {
 
     private static $DIR = "/xmind-temp/";

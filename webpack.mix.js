@@ -45,7 +45,7 @@ mix.styles([
     'resources/assets/common/css/common.css',
 ], 'public/static-common/css/common.css');
 
-// 
+// 欢迎页资源
 mix.styles([
     'resources/assets/welcome/css/app.css'
 ], 'public/static-welcome/css/app.css');

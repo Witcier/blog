@@ -10928,12 +10928,12 @@ _p[70] = {
                 return getEntries(local).then(readDocument);
             },
             encode: function(json, km, options) {
-                var url = "xmind-export";
+                var url = "export";
                 var data = JSON.stringify(json);
                 function fetch() {
                     return new Promise(function(resolve, reject) {
                         var xhr = new XMLHttpRequest();
-                        xhr.open("POST", url);
+                        xhr.open("GET", url);
                         xhr.responseType = "blob";
                         xhr.onload = resolve;
                         xhr.onerror = reject;

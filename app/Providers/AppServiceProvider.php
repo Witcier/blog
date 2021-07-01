@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Models\Admin\Config;
+use Dcat\Admin\Admin;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -29,5 +30,6 @@ class AppServiceProvider extends ServiceProvider
         \View::composer([
             'about.index', 'blog.index', 'guestbook.index', 'navigation.index', 'wiki.index', 'wiki.detail.index', 'xmind.index'
         ], \App\Http\ViewComposers\NavMenuComposer::class);
+        Admin::favicon(config('user_avatar'));
     }
 }
