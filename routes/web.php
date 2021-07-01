@@ -48,8 +48,8 @@ Route::group(['prefix' => 'blog'], function () {
 // 思维导图
 Route::group(['prefix' => 'xmind'], function () {
     // 关于首页
-    Route::get('/', 'XMindController@index')->name('xmind');
-    Route::get('/content/{name}', 'XMindController@getContent');
+    Route::get('/', 'XmindController@index')->name('xmind');
+    Route::get('/content/{name}', 'XmindController@getContent');
 });
 
 // 留言板
@@ -144,7 +144,4 @@ Route::group(['prefix' => 'about'], function () {
 //     });
 // });
 
-// 测试
-// Route::get('test01', 'TestController@index');
-// Route::get('test/share', 'TestController@share');
 

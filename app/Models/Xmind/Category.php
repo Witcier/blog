@@ -17,6 +17,6 @@ class Category extends Model
      */
     public function xminds()
     {
-        return $this->hasMany(XMind::class, 'xmind_category_id');
+        return $this->hasMany(Xmind::class, 'xmind_category_id');
     }
 }

@@ -27,7 +27,7 @@ class AppServiceProvider extends ServiceProvider
         \Schema::defaultStringLength(191);
         Config::loadAllConfig();
         \View::composer([
-            'about.index', 'blog.index', 'guestbook.index', 'navigation.index', 'wiki.index', 'wiki.detail.index'
+            'about.index', 'blog.index', 'guestbook.index', 'navigation.index', 'wiki.index', 'wiki.detail.index', 'xmind.index'
         ], \App\Http\ViewComposers\NavMenuComposer::class);
     }
 }
