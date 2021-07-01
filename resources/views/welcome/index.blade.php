@@ -18,9 +18,9 @@
                 <p class="user-profile-slogin">{{ config('user_slogin','Coding For Fun，代码改变世界') }}</p>
             </div>
 
-            @isset($navMenu)
+            @isset($menus)
                 <div class="welcome-nav-menu-container">
-                    @foreach($navMenu as $menu)
+                    @foreach($menus as $menu)
                         <a class="welcome-nav-menu" href="{{ url("/".$menu->path) }}">{{ $menu->name }}</a>
                     @endforeach
                 </div>

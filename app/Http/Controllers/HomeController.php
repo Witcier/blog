@@ -7,6 +7,7 @@ class HomeController extends Controller
 {
     public function index()
     {
-        return view('welcome.index');
+        return view('welcome.index')
+            ->with('menus', Menu::getMenu());
     }
 }
