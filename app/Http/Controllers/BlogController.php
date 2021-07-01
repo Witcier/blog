@@ -81,4 +81,14 @@ class BlogController extends BaseController
         return view('blog.detail.index')
             ->with('article', $document);
     }
+
+    protected function buildResponse($errorDesc, $data = null)
+    {
+        $content = ['errCode' => $errorDesc[0], 'msg' => $errorDesc[1]];
+        if (!empty($data)) {
+            $content['data'] = $data;
+        }
+
+        return response()->json($content);
+    }
 }

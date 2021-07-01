@@ -21,7 +21,7 @@
                                     <a href="#" class="xe-user-name overflowClip_1">
                                         $site->title
                                     </a>
-                                    <p class="overflowClip_2">{{ $site->describe }}</p>
+                                    <p class="overflowClip_2">$site->describe</p>
                                 </div>
                             </div>
                         </div>
