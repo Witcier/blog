@@ -23,7 +23,8 @@ class XmindController extends AdminController
     {
         return Grid::make(new Xmind(), function (Grid $grid) {
             $grid->model()->with(['category']);
-
+            $grid->model()->orderBy('order', 'asc');
+            
             $grid->name('名称');
             $grid->column('category.title', '分类');
             $grid->type('类型')->display(function ($value) {

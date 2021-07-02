@@ -9,6 +9,7 @@ use Dcat\Admin\Http\Controllers\AdminController;
 
 class MenusController extends AdminController
 {
+    protected $title = '首页菜单';
     /**
      * Make a grid builder.
      *
@@ -17,7 +18,8 @@ class MenusController extends AdminController
     protected function grid()
     {
         return Grid::make(new Menu(), function (Grid $grid) {
-
+            $grid->model()->orderBy('order','asc');
+            
             $grid->name('菜单名称');
             $grid->path('路由路径');
             $grid->order('顺序')->sortable();

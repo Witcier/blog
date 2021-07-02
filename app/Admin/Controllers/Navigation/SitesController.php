@@ -15,50 +15,13 @@ class SitesController extends AdminController
 {
     use HasResourceActions;
 
-    /**
-     * 展示所有网站
-     * @param Content $content
-     * @return Content
-     */
-    public function index(Content $content)
-    {
-        return $content
-            ->header('网站管理')
-            ->body($this->grid());
-    }
-
-    /**
-     * Edit interface.
-     *
-     * @param mixed $id
-     * @param Content $content
-     * @return Content
-     */
-    public function edit($id, Content $content)
-    {
-        return $content
-            ->header('编辑网站')
-            ->body($this->form()->edit($id));
-    }
-
-    /**
-     * Create interface.
-     *
-     * @param Content $content
-     * @return Content
-     */
-    public function create(Content $content)
-    {
-        return $content
-            ->header('新增网站')
-            ->body($this->form());
-    }
+    protected $title = '网站';
 
     /**
      * 网站列表展示
      * @return Grid
      */
-    private function grid()
+    protected function grid()
     {
         $grid = new Grid(new Site());
 
@@ -89,7 +52,7 @@ class SitesController extends AdminController
      *
      * @return Form
      */
-    private function form()
+    protected function form()
     {
         $form = new Form(new Site());
 
