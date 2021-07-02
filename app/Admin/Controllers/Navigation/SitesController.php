@@ -63,7 +63,6 @@ class SitesController extends AdminController
         $grid = new Grid(new Site());
 
         $grid->model()->with(['category']);
-        $grid->order('顺序');
         $grid->column('category.title', '分类');
         $grid->column('title', '标题');
         $grid->describe('描述')->limit(40);

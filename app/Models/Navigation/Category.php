@@ -12,6 +12,8 @@ class Category extends Model
 
     protected $table = 'navigation_categories';
 
+    protected $orderColumn = 'id';
+
     /**
      * 定义有多个子Category
      * @return HasMany

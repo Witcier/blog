@@ -62,21 +62,21 @@ class XmindController extends AdminController
         return Form::make(new Xmind(), function (Form $form) {
             $form->text('name', "名称")->required();
 
-            $form->radio('type', "类型")
-                ->options([XMind::TYPE_PUBLIC => '公开', XMind::TYPE_PRIVATE => '私密'])
-                ->default(XMind::TYPE_PUBLIC)
-                ->required();
+            $form->select('xmind_category_id', '分类')
+            ->options(Category::selectOptions())
+            ->rules('required|regex:/^[1-9][0-9]*$/', [
+                'regex' => '请选择导图分类，如果没有请先新建'
+            ]);
     
             $form->text('order', '顺序')
                 ->default(10000)
                 ->attribute('min', 1)
                 ->attribute('max', 10000);
-    
-            $form->select('xmind_category_id', '分类')
-                ->options(Category::selectOptions())
-                ->rules('required|regex:/^[1-9][0-9]*$/', [
-                    'regex' => '请选择导图分类，如果没有请先新建'
-                ]);
+
+            $form->radio('type', "类型")
+                ->options([XMind::TYPE_PUBLIC => '公开', XMind::TYPE_PRIVATE => '私密'])
+                ->default(XMind::TYPE_PUBLIC)
+                ->required();
     
             $form->footer(function ($footer) {
                 // 去掉`查看`checkbox
