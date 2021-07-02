@@ -12,6 +12,6 @@ class VerifyCsrfToken extends Middleware
      * @var array
      */
     protected $except = [
-        // 'admin/xmind/detail/xmind-export',
+        '/admin/xmind/detail/xmind/export',
     ];
 }

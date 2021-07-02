@@ -96,11 +96,8 @@ Route::group([
         $router->post('detail/{xmind}', 'XmindController@save')
             ->name('xmind.save')
             ->where('id', '[0-9]+');
-        $router->get('detail/export', function () {
-            return 'sser';
-        })->name('xmind.export');
-        // $router->post('detail/xmind-export', 'ExportController@exportXMind')
-        //     ->name('xmind.export');
+        $router->post('detail/xmind/export', 'ExportController@exportXMind')
+            ->name('xmind.export');
     });
 
 });

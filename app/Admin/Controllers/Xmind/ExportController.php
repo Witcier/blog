@@ -54,7 +54,7 @@ class ExportController extends BaseController
             ->setStylesEntity($stylesInstance)
             ->setMetaEntity($meta)
             ->buildXMind($filePath);
-        return XMindExportController::$DIR . $fileName;
+        return ExportController::$DIR . $fileName;
     }
 
     private function getXMindWorkspace()
@@ -65,7 +65,7 @@ class ExportController extends BaseController
     private function getXMindFilePath($fileName)
     {
 
-        return public_path(XMindExportController::$DIR . $fileName);
+        return public_path(ExportController::$DIR . $fileName);
     }
 
     private function createStyle()
