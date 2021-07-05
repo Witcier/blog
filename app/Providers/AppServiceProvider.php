@@ -26,7 +26,9 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         \Schema::defaultStringLength(191);
-        Config::loadAllConfig();
+        if (\Schema::hasTable((new Config)->getTable())) {
+            Config::loadAllConfig();
+        }
         \View::composer([
             'about.index', 'blog.index', 'guestbook.index', 'navigation.index', 'wiki.index', 'wiki.detail.index', 'xmind.index'
         ], \App\Http\ViewComposers\NavMenuComposer::class);
