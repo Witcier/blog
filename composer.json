@@ -12,6 +12,7 @@
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
         "intervention/image": "^2.5",
+        "lake/login-captcha": "^1.0",
         "laravel/framework": "^8.40",
         "laravel/horizon": "^5.7",
         "laravel/octane": "^1.0",
