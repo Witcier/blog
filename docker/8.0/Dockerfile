@@ -1,65 +1,40 @@
-FROM ubuntu:20.04
+FROM php:8.0.8-fpm
 
-LABEL maintainer="Taylor Otwell"
-
-ARG WWWGROUP
+RUN usermod -u 1000 www-data
 
 WORKDIR /var/www/html
 
-ENV DEBIAN_FRONTEND noninteractive
-ENV TZ=Asia/Shanghai
-
-RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
-
-ADD sources.list /etc/apt/
-
 RUN apt-get update \
-    && apt-get install -y gnupg gosu curl ca-certificates zip unzip git supervisor sqlite3 libcap2-bin libpng-dev python2 \
-    && mkdir -p ~/.gnupg \
-    && chmod 600 ~/.gnupg \
-    && echo "disable-ipv6" >> ~/.gnupg/dirmngr.conf \
-    && apt-key adv --homedir ~/.gnupg --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys E5267A6C \
-    && apt-key adv --homedir ~/.gnupg --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys C300EE8C \
-    && echo "deb https://launchpad.proxy.ustclug.org/ondrej/php/ubuntu focal main" > /etc/apt/sources.list.d/ppa_ondrej_php.list \
-    && apt-get update \
-    && apt-get install -y php8.0-cli php8.0-dev \
-       php8.0-pgsql php8.0-sqlite3 php8.0-gd \
-       php8.0-curl php8.0-memcached \
-       php8.0-imap php8.0-mysql php8.0-mbstring \
-       php8.0-xml php8.0-zip php8.0-bcmath php8.0-soap \
-       php8.0-intl php8.0-readline \
-       php8.0-msgpack php8.0-igbinary php8.0-ldap \
-       php8.0-redis \
-    && curl -so /usr/bin/composer https://mirrors.aliyun.com/composer/composer.phar \
-    && chmod a+x /usr/bin/composer \
-    && composer --version \
-    && curl -sL https://deb.nodesource.com/setup_16.x | bash - \
-    && apt-get install -y nodejs \
-    && curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
-    && echo "deb https://dl.yarnpkg.com/debian/ stable main" > /etc/apt/sources.list.d/yarn.list \
-    && apt-get update \
-    && apt-get install -y yarn \
-    && apt-get install -y mysql-client \
-    && apt-get install -y postgresql-client \
-    && apt-get -y autoremove \
-    && apt-get clean \
-    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+&& apt-get install -y \
+    libfreetype6-dev \
+    libjpeg-dev \
+    libpng-dev \
+    libwebp-dev \
+    supervisor \
+    python2 \
+&& curl -so /usr/bin/composer https://mirrors.aliyun.com/composer/composer.phar \
+&& chmod a+x /usr/bin/composer \
+&& composer --version \
+&& curl -sL https://deb.nodesource.com/setup_16.x | bash - \
+&& apt-get install -y nodejs \
+&& curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
+&& apt-get update \
+&& apt-get install -y yarn \
+&& docker-php-ext-install -j$(nproc) gd \
+&& docker-php-ext-install mysqli pdo_mysql \
+&& pecl install swoole \
+&& pecl install redis \
+&& docker-php-ext-install pcntl \
+&& apt-get install -y zlib1g-dev \
+&& apt-get install -y libzip-dev \
+&& apt-get install -y zip unzip \
+&& docker-php-ext-install zip \
+&& docker-php-ext-configure gd --with-webp=/usr/include/webp --with-jpeg=/usr/include --with-freetype=/usr/include/freetype2 \
+&& docker-php-ext-install gd \
+&& docker-php-ext-enable swoole redis pcntl zip gd
 
-RUN pecl channel-update https://pecl.php.net/channel.xml \
-    && pecl install swoole \
-    && pecl clear-cache \
-    && rm -rf /tmp/* /var/tmp/*
-
-RUN setcap "cap_net_bind_service=+ep" /usr/bin/php8.0
-
-RUN groupadd --force -g $WWWGROUP sail
-RUN useradd -ms /bin/bash --no-user-group -g $WWWGROUP -u 1337 sail
-
-COPY start-container /usr/local/bin/start-container
+COPY php.ini /usr/local/etc/php/php.ini
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
-COPY php.ini /etc/php/8.0/cli/conf.d/99-sail.ini
-RUN chmod +x /usr/local/bin/start-container
 
-EXPOSE 8000
-
-ENTRYPOINT ["start-container"]
+CMD supervisord -c  /etc/supervisor/supervisord.conf \
+    & php-fpm
